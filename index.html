@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html class="ng-app:app" id="ng-app" style="width:100%;height:100%;">
+  <head>
+    <title>Citi Billatera</title>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
+    <meta http-equiv="Expires" content="-1">
+    <meta name="google" value="notranslate">         
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <link rel="stylesheet" type="text/css" href="css/app.css" media="all" />
+    <!--[if lt IE 9]>
+      <link rel="stylesheet" type="text/css" href="css/ie6-and-down.css" media="all" />
+      <script src="js/json2.js"></script>
+      <script>
+        document.createElement('ng-include');
+        document.createElement('ng-pluralize');
+        document.createElement('ng-view');
+        document.createElement('select');
+ 
+        // Optionally these for CSS
+        document.createElement('ng:include');
+        document.createElement('ng:pluralize');
+        document.createElement('ng:view');
+      </script>
+    <![endif]-->
+  </head>
+  <body scroll="no">
+
+  <div id="view" ng-view></div>
+    
+  <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>
