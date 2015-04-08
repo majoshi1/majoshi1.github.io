@@ -1,0 +1,65 @@
+<PRE>
+Frontend technology stacks
+Application 4:
+JSON
+Angular JS 1.2
+Angular UI - ng-grid, utils
+Highcharts JS 2.3
+Bootstrap
+Angular UI - Bootstrap (Accordian, tabs, alerts, buttons, datepicker, dropdown, modal, pagination, typeahead, tooltip)
+Evaluated: D3, Kendo UI, Wijmo, Google Charts
+Server: Weblogic, Apache Wink
+
+Application 3:
+jQuery
+jQuery UI: Autocomplete
+jQuery plug-ings:  Cookie, JSON, BASE64, dotdotdot, Color, Tiny Scrollbar, Kalypto
+Others: ZeroClipboard, Require, mustache, piwik, Modernizr
+Server: Weblogic, Liberator
+
+Application 2:
+jQuery UI: Widget, Mouse, Sortable, Touch Punch
+jQuery Plug-ings: AjaxManager, Alert Dialogs, ScrollTo, Nicescroll, Validation, Hashchange, Isotope
+jQuery Mobile Framework
+Others: Sizzle.js, datejs, iscroll
+Server: Tomcat, Lightstreamer (WebSocket)
+
+
+Application 1:
+-Object Oriented JavaScript
+-JSP, Servlets
+
+Testing:
+-Unit: Jasmine with Testem runner
+-E2E: Protractor using Jasmine web-driver
+-CI: PhantomJS
+
+Performance:
+-Chrome Dev tools (Batarang)
+-YSlow
+-PageSpeed
+-JSPerf.com
+
+JavaScript Performance
+
+General:
+- Limit the amount of data shown. e.g. pagination, infinite-scroll etc.
+- Use lightweight components / libraries.
+- Avoid animations, gradients, dom manipulations.
+- Remove non-applicable / debug code in production
+
+Angular-specific:
+- Use single binding instead of two-way (e.g. bindonce).
+- Pre-computed values at template level.
+- Avoid polluting scopes.
+- Use of $digest instead of $apply. And $emit instead of $broadcast.
+- Role-based access.
+- Composition over inheritance. Simple objects instead of mixins.
+- Wrappers on common angular api.
+- Use ng-if / ng-switch instead of ng-show / ng-hide.
+- Use "track by $index" in ng-repeat (dom re-use).
+- Use $parse instead of $eval.
+- Directives: Initialize expressions in "compile" and then use in "link" function.
+- Use $watchExpression instead of $watch.
+
+</PRE>
