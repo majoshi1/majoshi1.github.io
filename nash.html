@@ -1,0 +1,6 @@
+<PRE>
+# mvn -q dependency:build-classpath  -Dmdep.outputFile="c:\tmp\cp" -Dmainclass=com.github.pk11.MainClass -Ddist="dist"
+# jjs -scripting "demo.js" -cp `cat "c:\tmp\cp"`:.\target\classes
+mvn install
+jjs -scripting "demo.js" -cp .\target\nashorn-1.0-SNAPSHOT-jar-with-dependencies.jar
+</PRE>
