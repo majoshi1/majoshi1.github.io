@@ -1,0 +1,66 @@
+<PRE>
+How to call procedure using JDBC ? CallableStatement
+How to differentiate input & output parameters ? registerOutParameter
+Multiple resultsets? getMoreResults
+
+Statement Types:
+Statement (simple query)
+PreparedStatement (Bind variables): Faster as pre-compiled. Cached execution plan.
+CallableStatement (proc)
+
+Use DataSource instead of DriverManager.
+DataSource is portable using jndi & provides pooling.
+
+DAO: Allows transperant access to any database.
+
+DriverManager.getConnection() - Establish and return a connection object.
+Connection.close() - Closes the connection to the database server.
+Connection.getMetaData() - Returns meta data from the database server to provide information like table structures, stored procedures and connection settings.
+Connection.createStatement() - Returns a statement object to execute SQL statements.
+Statement.executeUpdate() - Execute a SQL statement (non-SELECT statement) that returns no result set.
+Statement.executeQuery() - Execute a SQL SELECT statement and returns a result set object.
+Statement.close() - Closes the resources used by this statement object.
+ResultSet.first() - Moves the cursor to the first row in this ResultSet object.
+ResultSet.last() - Moves the cursor to the last row in this ResultSet object.
+ResultSet.next() - Moves the cursor forward one row from its current position.
+ResultSet.previous() - Moves the cursor to the previous row in this ResultSet object.
+ResultSet.getBoolean() - Returns the value as boolean of a given column.
+ResultSet.getByte() - Returns the value as byte of a given column.
+ResultSet.getDate() - Returns the value as Date of a given column.
+ResultSet.getDouble() - Returns the value as double of a given column.
+ResultSet.getFloat() - Returns the value as float of a given column.
+ResultSet.getInt() - Returns the value as int of a given column.
+ResultSet.getLong() - Returns the value as long of a given column.
+ResultSet.getString() - Returns the value as String of a given column.
+ResultSet.wasNull() - Returns true if the column fetched by the last get*() method has a null value.
+ResultSet.close() - Closes the resources used by this ResultSet object.
+
+
+//1. load the driver from specific vendor
+Class.forName("oracle.jdbc.driver.OracleDriver");
+//2. open connection to the databse by passing the URL to the database
+Connection con = DriverManager.getConnection("jdbc:oracle:thin:@hostname:1526:myDB");
+//3. create a statement object
+Statement stmt = con.createStatement();
+//4. Create a ResultSet
+ResultSet rs = stmt.executeQuery("SELECT * FROM Employees");
+//5. you can use the ResultSet Object to read data
+while(rs.next()){
+	rs.getString("firstname");
+}
+
+Connection con = getConnection();
+CallableStatement cs = null;
+cs = con.prepareCall("{call WhoAreThey(?,?)}");
+cs.registerOutParameter(1, Types.VARCHAR);
+cs.setString(2, office);
+cs.execute();
+String str = cs.getString(1);
+ResultSet rs = cs.getResultSet();
+
+ADO.Net
+SqlConnection
+SqlCommand
+SqlDataReader 
+
+</PRE>

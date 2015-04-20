@@ -1,0 +1,58 @@
+<PRE>
+Deployment descriptors: XML configs for web application (jar, war). Also, web.xml
+Servlet: init, service, destroy
+init: create thread-safe resources like JDBC datasources
+EJB method calls likes:
+init: jndi lookup, home-interface lookup
+service / doGet/ doPost: create bean from home interface
+
+Pass VO instead of session between servlet and jsp
+
+Web app: Document root (jsp) & WEB-INF (classes,libs etc)
+
+GET vs POST: POST has data in body, while GET has in URL.
+
+Thread-safe servlet: In multi-threaded environment, synchronize as needed.
+
+Servlet with long DB query: Client polling, JMS with MDB (Message Driven Bean).
+
+Forward vs redirect: Forward happens in server with relative path.
+Redirect comes to browser with absolute path.
+
+Servlet Filters: Intercepts HTTP requests in web application. 
+I used it to apply gzip compression, to reduce network throughput.
+Other use can be usage stats.
+
+JSP: Dynamic compile, extends HTTPServlet.
+JSP Scopes: Page, Request, Session, Application
+Static vs Dynamic include: @ include and jsp:include.
+JVM has 64KB limit on method size. So, static should be small.
+Otherwise split or use dynamic.
+
+Implicit JSP Objects: request, response, pageContext, session, application, out, config, page, exception.
+
+JSP instance vs local variables: Instance (<%! int a %>) variables are not thread-safe.
+
+Local (<% int a %>) variables are thread-safe.
+
+JSP tags (JSTL): Core (c), Formatting (fmt), XML (x), Database (sql).
+
+JNDI: Provides interface to LDAP.
+
+2-phase commit: Approach for commiting across two databases.
+Phase 1: Prepare or Request phase decides whether to commit or rollback.
+Phase 2: Commits
+
+J2EE Best practises:
+Pooling & Caching: Pool threads, db connections, objects. 
+Cache data. Idle timeout of unused session beans.
+Network:
+Session Facade: Single request from client.
+Value Object: Single object avoiding multiple client calls.
+Service Locator: Caches JNDI lookup results.
+Serialization: Use transient for avoiding cost of serialization.
+Prepared Statements for efficient and batch updates.
+Set auto-commit off
+
+Read short Q's by the end of interview companion book.
+</PRE>

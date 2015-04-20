@@ -1,0 +1,132 @@
+<PRE>
+11) Containers, Can you explain spring..
+The Spring framework is the leading full-stack Java/J2EE application framework. Unlike other frameworks, Spring
+does not impose itself on the design of a project due to its modular nature and, 
+it has been divided logically into independent packages, which can function independently. 
+It provides a light weight container and a non-invasive programming model enabled by the use of 
+dependency injection (aka IoC), 
+AOP (Aspect Oriented Programming), and 
+integrations with other framworks using portable service abstractions 
+(HibernateTemplate, JdbcTemplate, JmsTemplate etc).
+
+Types of dependancy injections: Constructor, Setter, Interface (Not in Spring).
+// Calls "new CarBO(carDao)"
+<constructor-arg>
+	<ref bean="carDao" />
+</constructor-arg>
+
+// Calls setDao
+<property name=”dao” 
+	ref bean="carDao" />
+</property>
+
+Constructor vs Setter injection: Constructor permits immutability.
+Setter gives more meaningful names like setFirstName, setLastName etc.
+
+IoC: Loose Coupling, lazy loading, Easy to test.
+
+Hibernate: Model inheritance, association and composition class relationships.
+Less verbose Transperant/transitive persistence, OOQL
+Portable: Across vendors with multi-dilect support.
+Maintainable: Automatic Dirty checking, inheritance mapping strategies
+Avoid boilerplate: Connection, exception, configuration
+More: Eager fetching, lazy loading (proxy), caching strategies, detached objects (no DTOs).
+
+Properties: hibernate.cfg.xml
+Mapping: *.hbm.xml
+
+SessionFactory: Threadsafe datastore for caching mappings.
+Session: Non-threadsafe object for persistence.
+Transient          Persistent           Detached
+car1 = new Car1()  session.save(car1)   session.evict() or clear() or close()
+
+Transient vs Detached: Transient has no id key.
+createCriteria: Type-safe query-by-criteria.
+Legacy apps: Wrapper classes. e.g. null in a boolean field.
+HBM file attributes
+cascade (parent-child deletion)
+inverse: e.g. car-part. Create car before creating parts, to get car-id.
+lazy, batch-size, unsaved-value
+
+session.get vs session.load: load throws exception if object does not exists.
+POJO: Should have getters / setters.
+Should implement equals / hashCode methods without using id, as it is generated only while saving.
+Implement Seriazable (for multi-processor cluster)
+Should not be final for lazy loading proxy.
+
+Aggregation / Association:
+Direction: Uni / Bi
+Cardinality: one-to-one, one-to-many, many-to-one and many-to-many
+Hibernate managed entity objects can be mapped for both cardinality and direction.
+
+Hibernate Tx: beginTransaction and commit.
+Also, @Transactional & AOP.
+
+Hibernate cache: first level (session), second level (session factory).
+Second level: CacheProvider: ConcurrentHashMap (testing), EHCache, Infinispan.
+Shared Cache Mode: none, all, selective.
+Cache Concurrency: read, read-write, nonstrict-read-write, transactional.
+Cache Mode: normal (read-write), get (read), put (write), refresh.
+Query Cache: Cache query results.
+
+
+ESB: JMS, HTTP, SOAP, XSL, XPath, DBMS, FTP, Ant.
+Spring: JDBC, ORM, OXM, JMS, MVC, AOP
+
+Spring Data, RestTemplate, HibernateTemplate, JdbcTemplate, JmsTemplate
+Spring MVC DispatcherServlet
+Spring LocalSessionFactoryBean (for hibernate)
+
+Spring-Hibernate using JpaTransactionManager
+	@Transactional
+	@PersistenceContext
+
+EntityManager
+	createQuery
+	createNamedQuery
+	persist = create
+	merge = update
+	remove = delete object
+	executeUpdate = any sql
+	createNativeQuery = procedure
+	find
+	getReference
+	flush
+Query
+	setParameter = Input
+	getResultList (List) = Output
+	getSingleResult = Output
+
+Spring JDBC:
+DataSource interface (DriverManagerDataSource)
+dataSource.getConnection();
+DAO pattern can be used.
+
+Spring JDBC Template: Avoids boilerplate code (open/close conn, stmt, resultset.)
+JdbcTemplate class methods: update, query, queryFor[Object|List]
+Query params are passed as object-array. 
+e.g. template.query( GET_EOD_XML, new Object[] { eodDate, grandParentId } , eod );
+Needs DataSource object in spring config.
+c3p0 simplifies pooled datasource.
+
+BlazeDS
+	The Spring integration with BlazeDS allows you to configure Spring beans as BlazeDS destinations for use as remote objects in Flex.
+	Spring-BlazeDS using RemotingDestination
+	@Service
+	@RemotingDestination
+	@RemotingInclude
+
+Parseley
+<fx:Declarations>
+	<parsley:ContextBuilder config="Config" />  <!--Config.mxml-->
+	<parsley:Configure/>
+</fx:Declarations>
+
+<fx:Script>
+[Inject]
+            [Bindable]
+            public var smurf:Smurf; //shared object managed by Parsley
+</fx:Script>
+
+<s:TextInput text="@{smurf.fname}" width="180"/> <!--Bi-directional binding-->
+</PRE>
