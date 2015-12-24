@@ -1,0 +1,40 @@
+log "Stopping Apache and Tomcat..."
+...
+
+log "Waiting for sockets to be closed..."
+SLEEP_COUNT=0
+# Changes ports
+while SOCKETS=$(netstat -natp 2>/dev/null | egrep '^tcp +[0-9]+ +[0-9]+ +[0-9.:a-fA-F]+:(8998|8999) +[0-9.:a-fA-F]+:[*0-9]+ .*$')
+do
+  log "Sockets:
+$SOCKETS"
+  SLEEP_COUNT=$(($SLEEP_COUNT+1))
+  if [ $SLEEP_COUNT -gt 60 ] ; then
+    log "Error: Timed out."
+    exit 1
+  fi
+  log "Waiting for sockets to be closed...[$SLEEP_COUNT]"
+  sleep 10
+done
+log "Done."
+
+log "Starting Apache and Tomcat..."
+...
+
+log "Waiting for LISTEN sockets..."
+SLEEP_COUNT=0
+until lsof -P -i tcp:8998 | grep -ql LISTEN
+do
+  SLEEP_COUNT=$(($SLEEP_COUNT+1))
+  log "No listener on Apache port 8998 yet...[$SLEEP_COUNT]"
+  if [ $SLEEP_COUNT -gt 60 ] ; then
+    log "Error: Timed out."
+    exit 1
+  fi
+  sleep 10
+done
+
+log "Done."
+
+log "Completed webapp clean restart."
+
