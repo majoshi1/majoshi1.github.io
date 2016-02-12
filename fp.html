@@ -17,59 +17,17 @@
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-messages.js"></script>
 <script src="ngscript.js"></script>
-
-<script>
-	(function(i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function() {
-			(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
-			'ga');
-
-	ga('create', 'UA-37706354-1', 'function-point-analysis.appspot.com');
-	ga('send', 'pageview');
-</script>
 </head>
 <body ng-controller="FPController">
-	<div id="fb-root"></div>
-	<script>
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id))
-				return;
-			js = d.createElement(s);
-			js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=231872330193129&version=v2.0";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
 	<header class="navbar navbar-static-top" id="top" role="banner">
-	
-	<div class="container">
-		<div class="navbar-header">
-			<button class="navbar-toggle" type="button" data-toggle="collapse"
-				data-target=".bs-navbar-collapse">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a href="/" class="navbar-brand">Home</a>
-		</div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">    
-    </nav>     
-	</div>
 	<div class="jumbotron"
 		style="background-color: #000000; color: #ffffff">
 		<div class="container">
 			<h1>Function Point Analysis Tool</h1>
-			<p>This tool (currently in alpha) is aimed to help users quickly estimate the
+			<p>This tool is aimed to help users quickly estimate the
 				effort required to build a software using function point
-				analysis technique. The users include project managers, team/tech lead, developers etc. The tool works best with Chrome browsers.</p>
+				analysis technique. The users include project managers, team/tech lead, developers etc. 
+			</p>
 		</div>
 	</div>
 	</header>
