@@ -1,0 +1,28 @@
+{
+  "defaultEnv": "wksp-pyzq",
+  "environments": {
+    "wksp-pyzq": {
+      "machines": {
+        "dev-machine": {
+          "attributes": {
+            "memoryLimitBytes": "2147483648"
+          },
+          "servers": {},
+          "agents": [
+            "org.eclipse.che.ws-agent",
+            "org.eclipse.che.terminal",
+            "org.eclipse.che.ssh"
+          ]
+        }
+      },
+      "recipe": {
+        "type": "dockerfile",
+        "content": "FROM codenvy/ubuntu_jdk8",
+        "contentType": "text/x-dockerfile"
+      }
+    }
+  },
+  "projects": [],
+  "name": "wksp-pyzq",
+  "commands": []
+}
