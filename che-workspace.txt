@@ -1,0 +1,66 @@
+{
+  "defaultEnv": "java",
+  "environments": {
+    "java": {
+      "machines": {
+        "ws-machine": {
+          "attributes": {
+            "memoryLimitBytes": "2097152000"
+          },
+          "servers": {},
+          "agents": [
+            "org.eclipse.che.terminal",
+            "org.eclipse.che.ws-agent",
+            "org.eclipse.che.ssh"
+          ]
+        }
+      },
+      "recipe": {
+        "location": "https://codenvy.io/api/recipe/recipeadapc5patzwo0vrd/script",
+        "type": "dockerfile",
+        "contentType": "text/x-dockerfile"
+      }
+    }
+  },
+  "projects": [
+    {
+      "name": "web-java-spring-boot",
+      "attributes": {
+        "contribute_to_branch": [
+          "master"
+        ]
+      },
+      "type": "maven",
+      "source": {
+        "location": "https://github.com/che-samples/web-java-spring-boot.git",
+        "type": "git",
+        "parameters": {}
+      },
+      "path": "/web-java-spring-boot",
+      "description": "",
+      "problems": [],
+      "mixins": [
+        "pullrequest"
+      ]
+    }
+  ],
+  "name": "java_1",
+  "commands": [
+    {
+      "commandLine": "mvn -f ${current.project.path} clean install",
+      "name": "build",
+      "attributes": {
+        "previewUrl": ""
+      },
+      "type": "mvn"
+    },
+    {
+      "commandLine": "mvn -f ${current.project.path} spring-boot:run",
+      "name": "run",
+      "attributes": {
+        "previewUrl": "http://${server.port.8080}"
+      },
+      "type": "mvn"
+    }
+  ]
+}
