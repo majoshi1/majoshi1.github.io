@@ -2,13 +2,11 @@
 <html lang=" EN" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Frameset Example</title>
-    <script type="text/javascript" defer src="LoadFrame.js"></script>
+    <title>Amazon Filters</title>
 </head>
-<frameset rows="160,*">
-    <frame src="frame1.html" name="topFrame" />
-    <frame src="frame2.html" name="bottomFrame" />
-</frameset>
+<h2>Amazon Search with free shipping and sort by price</h2>
+<input id="searchTxt" type="text" maxlength="512" id="searchTxt" class="searchField" placeholder="type item to search"/>
+<input id="clickMe" type="button" value="Find" onclick="window.open('https://www.amazon.com/s?k='+document.getElementById('searchTxt')+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');"/>
 <body>
 </body>
 </html>
