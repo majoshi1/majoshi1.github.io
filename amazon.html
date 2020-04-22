@@ -11,7 +11,7 @@
 <p>With free shipping and sort by price.</p>
 <p>Type item to search and hit enter key or Find button.</p>
 
-<input id="searchTxt" value="ayurvedic toothpaste">
+<input id="searchTxt" value="ayurvedic toothpaste" onClick="this.setSelectionRange(0, this.value.length)">
 <button id="findBtn" onclick="javascript:window.open('https://www.amazon.com/s?k='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find</button>
 
 <script>
