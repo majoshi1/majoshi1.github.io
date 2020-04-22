@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="EN" xmlns="http://www.w3.org/1999/xhtml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="utf-8" />
+    <title>ebay Filters</title>
+</head>
+<body>
+
+<h3>ebay Search</h3>
+<p>Shipping from US and sort by price.</p>
+<p>Type item to search and hit enter key or Find button.</p>
+
+<input id="searchTxt" value="mask" onClick="this.setSelectionRange(0, this.value.length)">
+<button id="findBtn" onclick="javascript:window.open('https://www.ebay.com/sch/i.html?_nkw='+document.getElementById('searchTxt').value+'&_sop=15&LH_PrefLoc=1', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find</button>
+
+<script>
+var input = document.getElementById("searchTxt");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("findBtn").click();
+  }
+});
+</script>
+</body>
+</html>
