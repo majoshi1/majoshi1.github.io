@@ -14,6 +14,8 @@
 <input id="searchTxt" value="pm2.5" onClick="this.setSelectionRange(0, this.value.length)">
 <button id="findBtn" onclick="javascript:window.open('https://www.ebay.com/sch/i.html?_nkw='+document.getElementById('searchTxt').value+'&_sop=15&LH_PrefLoc=1', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find</button>
 
+<p>Filters are not retained. So, please come back to this page for every new search.</p>
+
 <script>
 var input = document.getElementById("searchTxt");
 input.addEventListener("keyup", function(event) {
