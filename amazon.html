@@ -10,14 +10,14 @@
 <p>With free shipping and sort by price.</p>
 
 <input id="searchTxt" value="ayurvedic toothpaste">
-<button id="myBtn" onclick="javascript:window.open('https://www.amazon.com/s?k='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find</button>
+<button id="findBtn" onclick="javascript:window.open('https://www.amazon.com/s?k='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find</button>
 
 <script>
-var input = document.getElementById("myInput");
+var input = document.getElementById("searchTxt");
 input.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
    event.preventDefault();
-   document.getElementById("myBtn").click();
+   document.getElementById("findBtn").click();
   }
 });
 </script>
