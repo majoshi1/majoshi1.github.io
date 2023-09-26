@@ -27,7 +27,16 @@
 		console.log(i)
 		var track = i.nowPlaying.title + ' ' + i.nowPlaying.artist
 		console.log(track);
-		ytEmbed.init({'block':'ytThumbs','key':'your-youtube-developer-key','q':track,'type':'search','results':1,'meta':true,'player':'embed','layout':'full'});
+		var exec = {
+			"q": track,
+			"type": "search",
+			"results": "1",
+			"block": "ytThumbs",
+			"meta": "true",
+			"player": "embed",
+			"layout": "full"
+		}
+		ytEmbed.init(exec);
 	}
 
 
