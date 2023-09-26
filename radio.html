@@ -1,0 +1,41 @@
+<script src="https://yvoschaap.com/ytpage/ytembed.js"></script>
+<script>
+
+ var n = new WebSocket("wss://metadata.aiir.net/now-playing");
+	n.onopen = function() {
+		console.log('ws opened on browser')
+		var e = 177
+		n.send(JSON.stringify({
+			action: "subscribe",
+			serviceId: String(e)
+		}))
+	}
+	,
+	n.onclose = function() {
+		console.log('ws closed')
+	}
+	,
+	n.onerror = function(e) {
+		console.log('ws error',e)
+	}
+	,
+	n.onmessage = function(t) {
+		var i;
+		try {
+			i = JSON.parse(t.data)
+		} catch (n) {}
+		console.log(i)
+		var track = i.nowPlaying.title + ' ' + i.nowPlaying.artist
+		console.log(track);
+		ytEmbed.init({'block':'ytThumbs','key':'your-youtube-developer-key','q':track,'type':'search','results':1,'meta':true,'player':'embed','layout':'full'});
+	}
+
+
+	
+	
+	
+	
+</script>
+
+<div id="ytThumbs"></div>
+
