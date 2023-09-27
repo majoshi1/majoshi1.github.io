@@ -1,4 +1,3 @@
-<script src="https://yvoschaap.com/ytpage/ytembed.js"></script>
 <script>
 
  var n = new WebSocket("wss://metadata.aiir.net/now-playing");
@@ -26,17 +25,18 @@
 		} catch (n) {}
 		console.log(i)
 		var track = i.nowPlaying.title + ' ' + i.nowPlaying.artist
-		console.log(track);
-		var exec = {
-			"q": track,
-			"type": "search",
-			"results": "1",
-			"block": "ytThumbs",
-			"meta": "true",
-			"player": "embed",
-			"layout": "full"
-		}
-		ytEmbed.init(exec);
+		console.log(track)
+		
+		
+		  var a = document.createElement('a');
+		  var linkText = document.createTextNode(track);
+		  a.appendChild(linkText);
+		  a.title = track;
+		  a.href = '#';
+		  a.onclick = (function(){return function(){ window.open('https://www.youtube.com/results?search_query='+track, "Track", "popup"); }})();
+		  document.body.appendChild(a);
+		  var b = document.createElement('br');
+		  document.body.appendChild(b);
 	}
 
 
@@ -45,6 +45,4 @@
 	
 	
 </script>
-
-<div id="ytThumbs"></div>
 
