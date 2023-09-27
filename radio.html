@@ -21,11 +21,10 @@
 			try {
 				i = JSON.parse(t.data);
 			} catch (e) { }
-			console.log(i);
-			var track = i.nowPlaying.title + ' ' + i.nowPlaying.artist;
-			//console.log(track)
 			if (!i.nowPlaying.title) { return; }
-
+			//console.log(i);
+			var track = i.nowPlaying.title + ' - ' + i.nowPlaying.artist;
+			//console.log(track);
 			var a = document.createElement('a');
 			var linkText = document.createTextNode('- ' + track);
 			a.appendChild(linkText);
