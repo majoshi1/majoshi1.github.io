@@ -25,8 +25,7 @@
 		console.log(i)
 		var track = i.nowPlaying.title + ' ' + i.nowPlaying.artist
 		console.log(track)
-		if (!track) { return; }
-
+		if (!i.nowPlaying.title) { return; }
 
 		var a = document.createElement('a');
 		var linkText = document.createTextNode(track);
