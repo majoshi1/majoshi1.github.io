@@ -54,8 +54,9 @@ a {
 				return;
 			}
 			//console.log(track);
+			var li = document.createElement('li');
 			var a = document.createElement('a');
-			var linkText = document.createTextNode('- ' + track);
+			var linkText = document.createTextNode(track);
 			a.appendChild(linkText);
 			a.title = track;
 			a.href = '#';
@@ -67,18 +68,19 @@ a {
 					); 
 					return false; 
 				} })();
-			document.getElementById('listDiv').appendChild(a);
+			li.appendChild(a);
+			document.getElementById('listUl').appendChild(li);
 			var b = document.createElement('br');
-			document.getElementById('listDiv').appendChild(b);
+			document.getElementById('listUl').appendChild(b);
 		}
 	}
 	connect();
 </script>
 <h1>Live Bollywood Songs</h1>
-<div id="listDiv"></div>
+<ul id="listUl"></ul>
 <h3>Notes</h3>
 <ul>
-	<li>This page shows songs played live from a radio station.</li>
+	<li>This page shows live songs from a radio station.</li>
 	<li>Please keep the page open for some time, and songs should show up.</li>
 	<li>If nothing shows up or if new songs are not added, then try refreshing the page.</li>
 	<li>Clicking on a song opens youtube search, where song can be played.</li>
