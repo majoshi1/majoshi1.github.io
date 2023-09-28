@@ -1,4 +1,28 @@
+<style>
+body {
+  color: #222;
+  background: #fff;
+  font: 100% system-ui;
+}
+a {
+  color: #0033cc;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #eee;
+    background: #121212;
+  }
+
+  body a {
+    color: #809fff;
+  }
+}
+</style>
+
+
 <script>
+	const trackMap = {};
 	function connect() {
 		var ws = new WebSocket("wss://metadata.aiir.net/now-playing");
 		ws.onopen = function () {
@@ -24,6 +48,11 @@
 			if (!i.nowPlaying.title) { return; }
 			//console.log(i);
 			var track = i.nowPlaying.title + ' - ' + i.nowPlaying.artist;
+			if(!trackMap.hasOwnProperty(track)){
+				trackMap[track] = true;
+			} else {
+				return;
+			}
 			//console.log(track);
 			var a = document.createElement('a');
 			var linkText = document.createTextNode('- ' + track);
@@ -38,11 +67,20 @@
 					); 
 					return false; 
 				} })();
-			document.body.appendChild(a);
+			document.getElementById('listDiv').appendChild(a);
 			var b = document.createElement('br');
-			document.body.appendChild(b);
+			document.getElementById('listDiv').appendChild(b);
 		}
 	}
 	connect();
 </script>
-<p>This page shows songs played live from a radio station. Please keep the page open for some time, and songs should show up. If nothing shows up, then try refreshing the page. Clicking on a song opens youtube search, where song can be played. Then come back to this page for next song.</p>
+<h1>Live Bollywood Songs</h1>
+<div id="listDiv"></div>
+<h3>Notes</h3>
+<ul>
+	<li>This page shows songs played live from a radio station.</li>
+	<li>Please keep the page open for some time, and songs should show up.</li>
+	<li>If nothing shows up or if new songs are not added, then try refreshing the page.</li>
+	<li>Clicking on a song opens youtube search, where song can be played.</li>
+	<li>Then come back to this page for next song.</li>
+</ul>
