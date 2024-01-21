@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="EN" xmlns="http://www.w3.org/1999/xhtml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="utf-8" />
+    <title>YouTube Filters</title>
+</head>
+<style>
+  :root {
+    color-scheme: light dark;
+  }
+  body {
+    color: #222;
+    background: #fff;
+    font: 100% system-ui;
+  }
+  a {
+    color: #0033cc;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: #eee;
+      background: #121212;
+    }
+
+    body a {
+      color: #809fff;
+    }
+  }
+</style>  
+<body>
+
+<h3>YouTube Search</h3>
+<p>Type item to search and hit enter key or Find button.</p>
+
+<p>Find by view count.</p>
+<input id="searchTxt" value="song" onClick="this.setSelectionRange(0, this.value.length)">
+
+<button id="findByViewCount" onclick="javascript:window.open('https://m.youtube.com/results?sp=CAM%253D&search_query='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find</button>
+
+
+
+<p>Find by ratings.</p>
+<input id="searchTxt" value="song" onClick="this.setSelectionRange(0, this.value.length)">
+
+<button id="findByRating" onclick="javascript:window.open('https://m.youtube.com/results?sp=CAE%253D&search_query='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find</button>
+
+<script>
+const keyHandler = (input, btnId) => {
+	input.addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+	   event.preventDefault();
+	   document.getElementById(btnId).click();
+	  }
+	});
+}
+
+let input = document.getElementById("searchTxt");
+keyHandler(input, "findByViewCount");
+
+input = document.getElementById("searchTxt");
+keyHandler(input, "findByViewCount");
+</script>
+</body>
+</html>
