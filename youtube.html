@@ -29,20 +29,52 @@
     }
   }
 </style>  
-<body>
+<script>
+var input = document.getElementById("searchTxt");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("findBtn").click();
+  }
+});
+function submitForm(e) {
+  e.preventDefault();
+  var myform = document.getElementById("myform");
+
+  var formData = new FormData(myform);
+  const sp = formData.get("sp");
+  const text = formData.get("searchTxt");
+  window.open('https://m.youtube.com/results?sp='+sp+'&search_query='+text, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+}
+
+function load() {
+	var myform = document.getElementById("myform");
+	myform.addEventListener("submit", submitForm);
+}
+</script>
+<body onload="javascript:load()">
 
 <h3>YouTube Search</h3>
-<p>Type item to search and click any of buttons.</p>
 
-<input id="searchTxt" value="song" onClick="this.setSelectionRange(0, this.value.length)">
-<br/><br/>
-<button id="findByViewCount" onclick="javascript:window.open('https://m.youtube.com/results?sp=CAM%253D&search_query='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find by View Count</button>
-<br/>
-<button id="findByViewCountThisYear" onclick="javascript:window.open('https://m.youtube.com/results?sp=CAMSAggF&search_query='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find by View Count, This Year</button>
-<br/>
-<button id="findByRating" onclick="javascript:window.open('https://m.youtube.com/results?sp=CAE%253D&search_query='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find by Ratings</button>
-<br/>
-<button id="findByRatingThisYear" onclick="javascript:window.open('https://m.youtube.com/results?sp=CAESBAgFEAE%253D&search_query='+document.getElementById('searchTxt').value+'&rh=p_76%3A2661625011&s=price-asc-rank&dc', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Find by Ratings, This Year</button>
+<form id="myform">
+  <label for="searchTxt">Search: </label>
+  <input id="searchTxt" name="searchTxt" value="song" onClick="this.setSelectionRange(0, this.value.length)">
+  <br/>
+  <p>Please select a search criteria:</p>
+  <input type="radio" id="findByViewCount" name="sp" value="CAM%253D" checked>
+  <label for="findByViewCount">Find by View Count</label><br>
+
+  <input type="radio" id="findByViewCount" name="sp" value="CAMSAggF">
+  <label for="findByViewCount">Find by View Count, This Year</label><br>
+
+  <input type="radio" id="findByViewCount" name="sp" value="CAE%253D">
+  <label for="findByViewCount">Find by Ratings</label><br>
+
+  <input type="radio" id="findByViewCount" name="sp" value="CAESBAgFEAE%253D">
+  <label for="findByViewCount">Find by Ratings, This Year</label><br/><br/>
+
+  <input type="submit" value="Submit">
+</form>
 
 </body>
 </html>
