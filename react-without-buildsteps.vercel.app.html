@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>React without build steps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@remix-run/router@1.13.1/dist/router.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-router@6.20.1/dist/umd/react-router.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-router-dom@6.20.1/dist/umd/react-router-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.23.5/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" data-presets="env,react">
+    const { createBrowserRouter, RouterProvider, Route, Link } = window.ReactRouterDOM;
+    const { useRoutes, useNavigate } = window.ReactRouter;
+
+    // Header component
+
+    function Header() {
+      const navigate = useNavigate();
+
+      return (
+        <header>
+          <nav>
+            <button onClick={() => navigate('/')}>Home (path is /)</button>&nbsp;
+            <button onClick={() => navigate('/about')}>About Us (path is /about)</button>
+          </nav>
+        </header>
+      );
+    }
+
+    // Footer component
+
+    function Footer() {
+      return (
+        <pre>Just view source this page and you will see all of the code there, easy to follow and learn</pre>
+      )
+    }
+
+    // Home component
+
+    function Home() {      
+      return (
+        <div>
+          <Header />
+          <h1>Welcome to the Home Page!</h1>
+          <p>This is the home page content.</p>
+          {/* <Link to="about">About Us</Link> */}
+          <Footer />
+        </div>
+      );
+    }
+
+    // About component
+    
+    function About() {
+      return (
+        <div>
+          <Header />
+          <h1>About Us</h1>
+          <p>This is the about page content.</p>
+          {/* <Link to="/">Home</Link> */}
+          <Footer />
+        </div>
+      );
+    }
+    
+    const router = createBrowserRouter([
+        { path: '/', element: <Home /> },
+        { path: '/about', element: <About /> },
+      ]
+    );
+
+    // Render the router
+
+    ReactDOM.render(<RouterProvider router={router} />, document.getElementById('root'));
+  </script>
+</body>
+
+</html>
