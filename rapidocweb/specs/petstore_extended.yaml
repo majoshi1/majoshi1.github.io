@@ -107,15 +107,19 @@ externalDocs:
 tags:
   - name: pet
     description: Everything about your Pets
+    x-tag-expanded: false
   - name: store
     description: Access to Petstore orders
     x-tag-expanded: false
   - name: user
     description: Operations about user
+    x-tag-expanded: false
   - name: pet_model
     description: The Pet Model
+    x-tag-expanded: false
   - name: store_model
     description: The Order Model
+    x-tag-expanded: false
 paths:
   /pet:
     parameters:
@@ -177,7 +181,7 @@ paths:
       operationId: updatePet
       externalDocs:
         description: Find more info here
-        url: https://rapidocweb.com
+        url: https://majoshi1.github.io/rapidocweb
       responses:
         '400':
           description: Invalid ID supplied
@@ -745,7 +749,7 @@ components:
               description: Dumb Property
       xml:
         name: Category
-        namespace: https://rapidocweb.com
+        namespace: https://majoshi1.github.io/rapidocweb
     Dog:
       description: A representation of a dog
       allOf:
@@ -814,7 +818,7 @@ components:
           writeOnly: true
       xml:
         name: Order
-        namespace: https://rapidocweb.com
+        namespace: https://majoshi1.github.io/rapidocweb
     Pet:
       type: object
       required:
@@ -876,7 +880,7 @@ components:
           type: string
       xml:
         name: Pet
-        namespace: https://rapidocweb.com
+        namespace: https://majoshi1.github.io/rapidocweb
     Tag:
       type: object
       properties:
@@ -890,7 +894,7 @@ components:
           minLength: 1
       xml:
         name: Tag
-        namespace: https://rapidocweb.com
+        namespace: https://majoshi1.github.io/rapidocweb
     User:
       type: object
       properties:
@@ -941,7 +945,7 @@ components:
           format: int32
       xml:
         name: User
-        namespace: https://rapidocweb.com
+        namespace: https://majoshi1.github.io/rapidocweb
   requestBodies:
     Pet:
       content:

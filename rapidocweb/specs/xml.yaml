@@ -21,7 +21,7 @@ components:
     Pet:
       xml:
         name: Pet
-        namespace: https://rapidocweb.com
+        namespace: https://majoshi1.github.io/rapidocweb
       type: object
       properties:
         id:
@@ -59,4 +59,4 @@ components:
         name:
           type: string
       xml:
-        namespace: https://rapidocweb.com
+        namespace: https://majoshi1.github.io/rapidocweb
