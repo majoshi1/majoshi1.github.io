@@ -1,18 +1,87 @@
 <!DOCTYPE html>
 <!-- saved from url=(0045)https://antonz.org/interactive-api-tutorials/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>API tutorials beyond OpenAPI</title>
-<meta name="description" content="Let&#39;s write the docs like it&#39;s 2023."><meta name="robots" content="index, follow"><link rel="stylesheet" type="text/css" href="./api_files/style.ab5b07a3b8460dd96d9aa8eef3fcde58195fdd8aeae66b56e0428d9bc3c4a9f6.css"><link rel="icon" href="https://antonz.org/assets/favicon/favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="https://antonz.org/assets/favicon/favicon.svg"><link rel="apple-touch-icon" href="https://antonz.org/assets/favicon/apple-touch-icon.png"><link rel="manifest" href="https://antonz.org/assets/favicon/manifest.json"><link rel="canonical" href="https://antonz.org/interactive-api-tutorials/"><meta name="author" content="Anton Zhiyanov"><meta property="og:type" content="article"><meta property="og:title" content="API tutorials beyond OpenAPI"><meta property="og:description" content="Let&#39;s write the docs like it&#39;s 2023."><meta property="og:url" content="https://antonz.org/interactive-api-tutorials/"><meta property="og:image" content="https://antonz.org/interactive-api-tutorials/cover.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="API tutorials beyond OpenAPI"><meta name="twitter:description" content="Let&#39;s write the docs like it&#39;s 2023."><meta name="twitter:url" content="https://antonz.org/interactive-api-tutorials/"><meta name="twitter:site" content="@ohmypy"><meta name="twitter:image" content="https://antonz.org/interactive-api-tutorials/cover.png"></head><body><div class="header"><div class="container"><div class="row"><div class="col-xs-6 col-sm-3"><a class="img-link" href="https://antonz.org/"><img src="./api_files/logo.svg" class="header-icon">
-</a>&nbsp;
-<a href="https://antonz.org/"><strong>Anton Zhiyanov</strong></a></div><div class="col-xs-12 col-sm-6 col-md-4 hidden-mobile"><a class="menu__link" href="https://antonz.org/#projects"><span>projects</span>
-</a><a class="menu__link" href="https://antonz.org/#books"><span>books</span>
-</a><a class="menu__link" href="https://antonz.org/all/"><span>blog</span>
-</a><a class="menu__link" href="https://antonz.org/#about"><span>about</span></a></div><div class="col-xs-6 col-sm-3"><div class="search-module"><form action="https://duckduckgo.com/"><input type="hidden" name="kf" value="-1">
-<input type="hidden" name="kz" value="-1">
-<input type="hidden" name="kaf" value="1">
-<input type="hidden" name="ko" value="-2">
-<input type="hidden" name="k1" value="-1">
-<input type="hidden" name="sites" value="antonz.org">
-<input type="search" name="q" autocomplete="off" placeholder="Search" aria-label="Search"></form></div></div></div></div></div><div class="storey"><div class="container"><article class="post" data-namespace=""><div class="row"><div class="col-xs-12 col-md-10 article"><header><h1>API tutorials beyond OpenAPI</h1></header><p>Not all documentation is created equal. According to the popular classification, there are four document types: tutorials, how-to guides, technical references, and explanations.</p><div class="row"><div class="col-xs-12 col-sm-10"><img alt="Four types of documentation" src="./api_files/documentation.png"></div></div><p>OpenAPI, the de facto standard for documenting APIs, is a decent reference-style documentation (and client code generator, of course). But it can't serve as a good how-to or tutorial.</p><p>In this article, I will introduce a concise and readable way to write interactive tutorials and how-tos for any HTTP API (REST, RPC, or other style). And for that (surprise, surprise), we will rely on the HTTP protocol itself.</p><h2 id="a-crash-course-in-http-messages">A crash course in HTTP messages</h2><p>HTTP/1.x is a plain-text protocol that describes the communication between the client and the server. The client sends messages like this:</p><pre tabindex="0"><code>POST /anything/chat HTTP/1.1
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>API tutorials beyond OpenAPI</title>
+    <meta name="description" content="Let&#39;s write the docs like it&#39;s 2023.">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" type="text/css"
+        href="./api_files/style.ab5b07a3b8460dd96d9aa8eef3fcde58195fdd8aeae66b56e0428d9bc3c4a9f6.css">
+    <link rel="icon" href="https://antonz.org/assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="https://antonz.org/assets/favicon/favicon.svg">
+    <link rel="apple-touch-icon" href="https://antonz.org/assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="https://antonz.org/assets/favicon/manifest.json">
+    <link rel="canonical" href="https://antonz.org/interactive-api-tutorials/">
+    <meta name="author" content="Anton Zhiyanov">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="API tutorials beyond OpenAPI">
+    <meta property="og:description" content="Let&#39;s write the docs like it&#39;s 2023.">
+    <meta property="og:url" content="https://antonz.org/interactive-api-tutorials/">
+    <meta property="og:image" content="https://antonz.org/interactive-api-tutorials/cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="API tutorials beyond OpenAPI">
+    <meta name="twitter:description" content="Let&#39;s write the docs like it&#39;s 2023.">
+    <meta name="twitter:url" content="https://antonz.org/interactive-api-tutorials/">
+    <meta name="twitter:site" content="@ohmypy">
+    <meta name="twitter:image" content="https://antonz.org/interactive-api-tutorials/cover.png">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3"><a class="img-link" href="https://antonz.org/"><img
+                            src="./api_files/logo.svg" class="header-icon">
+                    </a>&nbsp;
+                    <a href="https://antonz.org/"><strong>Anton Zhiyanov</strong></a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 hidden-mobile"><a class="menu__link"
+                        href="https://antonz.org/#projects"><span>projects</span>
+                    </a><a class="menu__link" href="https://antonz.org/#books"><span>books</span>
+                    </a><a class="menu__link" href="https://antonz.org/all/"><span>blog</span>
+                    </a><a class="menu__link" href="https://antonz.org/#about"><span>about</span></a></div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="search-module">
+                        <form action="https://duckduckgo.com/"><input type="hidden" name="kf" value="-1">
+                            <input type="hidden" name="kz" value="-1">
+                            <input type="hidden" name="kaf" value="1">
+                            <input type="hidden" name="ko" value="-2">
+                            <input type="hidden" name="k1" value="-1">
+                            <input type="hidden" name="sites" value="antonz.org">
+                            <input type="search" name="q" autocomplete="off" placeholder="Search" aria-label="Search">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="storey">
+        <div class="container">
+            <article class="post" data-namespace="">
+                <div class="row">
+                    <div class="col-xs-12 col-md-10 article">
+                        <header>
+                            <h1>API tutorials beyond OpenAPI</h1>
+                        </header>
+                        <p>Not all documentation is created equal. According to the popular classification, there are
+                            four document types: tutorials, how-to guides, technical references, and explanations.</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10"><img alt="Four types of documentation"
+                                    src="./api_files/documentation.png"></div>
+                        </div>
+                        <p>OpenAPI, the de facto standard for documenting APIs, is a decent reference-style
+                            documentation (and client code generator, of course). But it can't serve as a good how-to or
+                            tutorial.</p>
+                        <p>In this article, I will introduce a concise and readable way to write interactive tutorials
+                            and how-tos for any HTTP API (REST, RPC, or other style). And for that (surprise, surprise),
+                            we will rely on the HTTP protocol itself.</p>
+                        <h2 id="a-crash-course-in-http-messages">A crash course in HTTP messages</h2>
+                        <p>HTTP/1.x is a plain-text protocol that describes the communication between the client and the
+                            server. The client sends messages like this:</p>
+                        <pre tabindex="0"><code>POST /anything/chat HTTP/1.1
 host: httpbingo.org
 content-type: application/json
 user-agent: curl/7.87.0
@@ -20,27 +89,101 @@ user-agent: curl/7.87.0
 {
     "message": "Hello!"
 }
-</code></pre><p>And receives messages like this in response:</p><pre tabindex="0"><code>HTTP/1.1 200 OK
+</code></pre>
+                        <p>And receives messages like this in response:</p>
+                        <pre tabindex="0"><code>HTTP/1.1 200 OK
 date: Mon, 28 Aug 2023 07:51:49 GMT
 content-type: application/json
 
 {
     "message": "Hi!"
 }
-</code></pre><blockquote><p>HTTP/2, the successor to HTTP/1.1, is a binary protocol. However, all tools (such as the browser devtools or curl) display HTTP/2 messages in plain text (just like HTTP/1.1), so we can safely ignore this fact for our purposes.</p></blockquote><div class="row"><div class="col-xs-12 col-sm-10"><figure><img alt="HTTP request and response" src="./api_files/http-messages.png"><figcaption class="align-center">It's easy to read HTTP requests and responses once you get used to it.</figcaption></figure></div></div><p><strong>HTTP request</strong> consists of three main sections:</p><ol><li>Request line:</li></ol><pre tabindex="0"><code>POST /anything/chat HTTP/1.1
-</code></pre><ul><li>The <em>method</em> (<code>POST</code>) defines the operation the client wants to perform.</li><li>The <em>path</em> (<code>/anything/chat</code>) is the URL of the requested resource (without the protocol, domain and port).</li><li>The <em>version</em> (<code>HTTP/1.1</code>) indicates the version of the HTTP protocol.</li></ul><ol start="2"><li>Request headers:</li></ol><pre tabindex="0"><code>host: httpbingo.org
+</code></pre>
+                        <blockquote>
+                            <p>HTTP/2, the successor to HTTP/1.1, is a binary protocol. However, all tools (such as the
+                                browser devtools or curl) display HTTP/2 messages in plain text (just like HTTP/1.1), so
+                                we can safely ignore this fact for our purposes.</p>
+                        </blockquote>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10">
+                                <figure><img alt="HTTP request and response" src="./api_files/http-messages.png">
+                                    <figcaption class="align-center">It's easy to read HTTP requests and responses once
+                                        you get used to it.</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <p><strong>HTTP request</strong> consists of three main sections:</p>
+                        <ol>
+                            <li>Request line:</li>
+                        </ol>
+                        <pre tabindex="0"><code>POST /anything/chat HTTP/1.1
+</code></pre>
+                        <ul>
+                            <li>The <em>method</em> (<code>POST</code>) defines the operation the client wants to
+                                perform.</li>
+                            <li>The <em>path</em> (<code>/anything/chat</code>) is the URL of the requested resource
+                                (without the protocol, domain and port).</li>
+                            <li>The <em>version</em> (<code>HTTP/1.1</code>) indicates the version of the HTTP protocol.
+                            </li>
+                        </ul>
+                        <ol start="2">
+                            <li>Request headers:</li>
+                        </ol>
+                        <pre tabindex="0"><code>host: httpbingo.org
 content-type: application/json
 user-agent: curl/7.87.0
-</code></pre><p>Each header is a key-value pair that tells the server some useful information about the request. In our case it's the hostname of the server (<code>httpbingo.org</code>), the type of the content (<code>application/json</code>) and the client's self-identification (<code>user-agent</code>).</p><ol start="3"><li>Request body:</li></ol><pre tabindex="0"><code>{
+</code></pre>
+                        <p>Each header is a key-value pair that tells the server some useful information about the
+                            request. In our case it's the hostname of the server (<code>httpbingo.org</code>), the type
+                            of the content (<code>application/json</code>) and the client's self-identification
+                            (<code>user-agent</code>).</p>
+                        <ol start="3">
+                            <li>Request body:</li>
+                        </ol>
+                        <pre tabindex="0"><code>{
     "message": "Hello!"
 }
-</code></pre><p>The actual data that the client sends to the server.</p><p>The HTTP protocol is stateless, so any state must be contained within the request itself, either in the headers or in the body.</p><p><strong>HTTP response</strong> also consists of three main sections:</p><ol><li>Status line:</li></ol><pre tabindex="0"><code>HTTP/1.1 200 OK
-</code></pre><ul><li>The <em>version</em> (<code>HTTP/1.1</code>) indicates the version of the HTTP protocol.</li><li>The <em>status code</em> (<code>200</code>) tells whether the request was successful or not, and why (there are many status codes for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">different situations</a>).</li><li>The <em>status message</em> is a human-readable description of the status code. HTTP/2 does not have it.</li></ul><ol start="2"><li>Response headers:</li></ol><pre tabindex="0"><code>date: Mon, 28 Aug 2023 07:51:49 GMT
+</code></pre>
+                        <p>The actual data that the client sends to the server.</p>
+                        <p>The HTTP protocol is stateless, so any state must be contained within the request itself,
+                            either in the headers or in the body.</p>
+                        <p><strong>HTTP response</strong> also consists of three main sections:</p>
+                        <ol>
+                            <li>Status line:</li>
+                        </ol>
+                        <pre tabindex="0"><code>HTTP/1.1 200 OK
+</code></pre>
+                        <ul>
+                            <li>The <em>version</em> (<code>HTTP/1.1</code>) indicates the version of the HTTP protocol.
+                            </li>
+                            <li>The <em>status code</em> (<code>200</code>) tells whether the request was successful or
+                                not, and why (there are many status codes for <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">different
+                                    situations</a>).</li>
+                            <li>The <em>status message</em> is a human-readable description of the status code. HTTP/2
+                                does not have it.</li>
+                        </ul>
+                        <ol start="2">
+                            <li>Response headers:</li>
+                        </ol>
+                        <pre tabindex="0"><code>date: Mon, 28 Aug 2023 07:51:49 GMT
 content-type: application/json
-</code></pre><p>Similar to request headers, these provide useful information about the response to the client.</p><ol start="3"><li>Response body:</li></ol><pre tabindex="0"><code>{
+</code></pre>
+                        <p>Similar to request headers, these provide useful information about the response to the
+                            client.</p>
+                        <ol start="3">
+                            <li>Response body:</li>
+                        </ol>
+                        <pre tabindex="0"><code>{
     "message": "Hi!"
 }
-</code></pre><p>The actual data that the server sends to the client.</p><p>There is much more to the HTTP protocol, but this basic knowledge is enough to cover most of API use cases. So let's move on.</p><h2 id="using-http-to-document-api-usage">Using HTTP to document API usage</h2><p>We are going to take an HTTP request:</p><pre tabindex="0"><code>POST /anything/chat HTTP/1.1
+</code></pre>
+                        <p>The actual data that the server sends to the client.</p>
+                        <p>There is much more to the HTTP protocol, but this basic knowledge is enough to cover most of
+                            API use cases. So let's move on.</p>
+                        <h2 id="using-http-to-document-api-usage">Using HTTP to document API usage</h2>
+                        <p>We are going to take an HTTP request:</p>
+                        <pre tabindex="0"><code>POST /anything/chat HTTP/1.1
 host: httpbingo.org
 content-type: application/json
 user-agent: curl/7.87.0
@@ -48,58 +191,103 @@ user-agent: curl/7.87.0
 {
     "message": "Hello!"
 }
-</code></pre><p>And modify it just a little bit:</p><ul><li>include the full URL in the request line instead of the path;</li><li>remove the protocol version.</li></ul><pre tabindex="0"><code>POST http://httpbingo.org/anything/chat
+</code></pre>
+                        <p>And modify it just a little bit:</p>
+                        <ul>
+                            <li>include the full URL in the request line instead of the path;</li>
+                            <li>remove the protocol version.</li>
+                        </ul>
+                        <pre tabindex="0"><code>POST http://httpbingo.org/anything/chat
 content-type: application/json
 
 {
     "message": "Hello!"
 }
-</code></pre><p>This format is perfect for API usage examples. It's concise and readable, yet formal enough to be executed programmatically (directly from the documentation, as we'll see shortly).</p><h2 id="writing-an-interactive-api-guide">Writing an interactive API guide</h2><p>Instead of telling you how to write an interactive API tutorial, I'm going to show you one. We'll use <a href="https://docs.github.com/en/rest/gists/gists">Gists API</a> as an example. It's a compact and useful GitHub service for storing code snippets (called "gists").</p><div class="row"><div class="col-xs-12 col-sm-10"><figure><img alt="GitHub Gists" src="./api_files/gists.png"><figcaption class="align-center">Gists are quite handy when a full-blown Git repository is too much.</figcaption></figure></div></div><p>Even if you are not a GitHub user, you still have access to the Gists API.</p><h3 id="reading-gists">Reading gists</h3><p>Let's take a look at the <strong>public gists</strong> of my pal Redowan (user <code>rednafi</code>). The response can be quite chatty, so we'll only select the 3 most recent (<code>per_page = 3</code>):</p><pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/users/rednafi/gists?per_page=3
+</code></pre>
+                        <p>This format is perfect for API usage examples. It's concise and readable, yet formal enough
+                            to be executed programmatically (directly from the documentation, as we'll see shortly).</p>
+                        <h2 id="writing-an-interactive-api-guide">Writing an interactive API guide</h2>
+                        <p>Instead of telling you how to write an interactive API tutorial, I'm going to show you one.
+                            We'll use <a href="https://docs.github.com/en/rest/gists/gists">Gists API</a> as an example.
+                            It's a compact and useful GitHub service for storing code snippets (called "gists").</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10">
+                                <figure><img alt="GitHub Gists" src="./api_files/gists.png">
+                                    <figcaption class="align-center">Gists are quite handy when a full-blown Git
+                                        repository is too much.</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <p>Even if you are not a GitHub user, you still have access to the Gists API.</p>
+                        <h3 id="reading-gists">Reading gists</h3>
+                        <p>Let's take a look at the <strong>public gists</strong> of my pal Redowan (user
+                            <code>rednafi</code>). The response can be quite chatty, so we'll only select the 3 most
+                            recent (<code>per_page = 3</code>):</p>
+                        <pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/users/rednafi/gists?per_page=3
 accept: application/json
-</code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="succeded">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status>
-            ✓ Done
-            <codapi-ref>by <a href="https://codapi.org/">codapi</a></codapi-ref></codapi-status>
-</codapi-toolbar>
-<codapi-output mode="text" style="">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code>HTTP/1.1 200 <br>cache-control: public, max-age=60, s-maxage=60<br>content-length: 1650<br>content-type: application/json; charset=utf-8<br>etag: W/"ca67980728fd632d1ff79fd0acd5be1ab8bae9d3ed4a2d4deefae4f75e51014c"<br>link: &lt;https://api.github.com/user/30027932/gists?per_page=3&amp;page=2&gt;; rel="next", &lt;https://api.github.com/user/30027932/gists?per_page=3&amp;page=14&gt;; rel="last"<br>x-github-media-type: github.v3<br>x-github-request-id: C6E9:3DCEF1:26765BD:4D31BDE:67AD521C<br>x-ratelimit-limit: 60<br>x-ratelimit-remaining: 54<br>x-ratelimit-reset: 1739414329<br>x-ratelimit-resource: core<br>x-ratelimit-used: 6<br><json-viewer><template shadowrootmode="open"><!----><ul part="object"><!--?lit$910296523$--><!----><li part="property" data-path="0"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->0: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----><!----><li part="property" data-path="1"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->1: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----><!----><li part="property" data-path="2"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->2: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----></ul></template></json-viewer></code></pre>
-</codapi-output>
-</codapi-snippet><p>A family of non-standard <code>x-ratelimit</code> headers tell us how GitHub <strong>limits</strong> our requests:</p><ul><li>There is a total number of <code>x-ratelimit-limit</code> requests available per hour.</li><li>We've already used <code>x-ratelimit-used</code> requests.</li><li>So there are <code>x-ratelimit-remaining</code> requests left.</li></ul><p>We need to keep an eye on these to make sure we don't exceed the quota.</p><p>We can use a combination of <code>page</code> and <code>per_page</code> query parameters to select a <strong>slice of gists</strong>. For example, here are gists 10-15:</p><pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/users/rednafi/gists?page=3&amp;per_page=5
+</code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p>A family of non-standard <code>x-ratelimit</code> headers tell us how GitHub
+                            <strong>limits</strong> our requests:</p>
+                        <ul>
+                            <li>There is a total number of <code>x-ratelimit-limit</code> requests available per hour.
+                            </li>
+                            <li>We've already used <code>x-ratelimit-used</code> requests.</li>
+                            <li>So there are <code>x-ratelimit-remaining</code> requests left.</li>
+                        </ul>
+                        <p>We need to keep an eye on these to make sure we don't exceed the quota.</p>
+                        <p>We can use a combination of <code>page</code> and <code>per_page</code> query parameters to
+                            select a <strong>slice of gists</strong>. For example, here are gists 10-15:</p>
+                        <pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/users/rednafi/gists?page=3&amp;per_page=5
 accept: application/json
-</code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="succeded">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status>
-            ✓ Done
-            <codapi-ref>by <a href="https://codapi.org/">codapi</a></codapi-ref></codapi-status>
-</codapi-toolbar>
-<codapi-output mode="text" style="">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code>HTTP/1.1 200 <br>cache-control: public, max-age=60, s-maxage=60<br>content-length: 2085<br>content-type: application/json; charset=utf-8<br>etag: W/"d50a35ffb9d9ce4a0d629fd1fca694c1ef8dfbb5bf0d625001d8235382287d47"<br>link: &lt;https://api.github.com/user/30027932/gists?page=2&amp;per_page=5&gt;; rel="prev", &lt;https://api.github.com/user/30027932/gists?page=4&amp;per_page=5&gt;; rel="next", &lt;https://api.github.com/user/30027932/gists?page=9&amp;per_page=5&gt;; rel="last", &lt;https://api.github.com/user/30027932/gists?page=1&amp;per_page=5&gt;; rel="first"<br>x-github-media-type: github.v3<br>x-github-request-id: EFAB:1347:352A2D:6AA6C7:67AE34C9<br>x-ratelimit-limit: 60<br>x-ratelimit-remaining: 59<br>x-ratelimit-reset: 1739473625<br>x-ratelimit-resource: core<br>x-ratelimit-used: 1<br><json-viewer><template shadowrootmode="open"><!----><ul part="object"><!--?lit$910296523$--><!----><li part="property" data-path="0"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->0: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----><!----><li part="property" data-path="1"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->1: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----><!----><li part="property" data-path="2"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->2: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----><!----><li part="property" data-path="3"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->3: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----><!----><li part="property" data-path="4"><span part="key" class=" key collapsable collapsableCollapsed "><!--?lit$910296523$-->4: </span><!--?lit$910296523$--><span part="preview" class="preview"><!--?lit$910296523$-->{ url: "https://api.git...", forks_url: "https://api.git...", commits_url: "https://api.git...", ... }</span></li><!----></ul></template></json-viewer></code></pre>
-</codapi-output>
-</codapi-snippet><p>Note that GitHub provides navigation links in the <code>link</code> header:</p><pre tabindex="0"><code>link:
+</code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p>Note that GitHub provides navigation links in the <code>link</code> header:</p>
+                        <pre tabindex="0"><code>link:
     &lt;https://api.github.com/user/30027932/gists?page=2&amp;per_page=5&gt;; rel="prev",
     &lt;https://api.github.com/user/30027932/gists?page=4&amp;per_page=5&gt;; rel="next",
     &lt;https://api.github.com/user/30027932/gists?page=7&amp;per_page=5&gt;; rel="last",
     &lt;https://api.github.com/user/30027932/gists?page=1&amp;per_page=5&gt;; rel="first"
-</code></pre><p>That's thoughtful of them!</p><p>Okay, now let's take a look at the <strong>specific gist</strong> with id <code>88242fd822603290255877e396664ba5</code> (this one is mine; let's not bother Redowan anymore):</p><pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/gists/88242fd822603290255877e396664ba5
+</code></pre>
+                        <p>That's thoughtful of them!</p>
+                        <p>Okay, now let's take a look at the <strong>specific gist</strong> with id
+                            <code>88242fd822603290255877e396664ba5</code> (this one is mine; let's not bother Redowan
+                            anymore):</p>
+                        <pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/gists/88242fd822603290255877e396664ba5
 accept: application/json
 </code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><p>We can see that there is a <code>greet.py</code> file written in the Python <code>language</code> with a certain <code>content</code>:</p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Greeter</span><span class="p">:</span>
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p>We can see that there is a <code>greet.py</code> file written in the Python
+                            <code>language</code> with a certain <code>content</code>:</p>
+                        <div class="highlight">
+                            <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Greeter</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">greeting</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">greeting</span> <span class="o">=</span> <span class="n">greeting</span>
 </span></span><span class="line"><span class="cl">
@@ -108,41 +296,56 @@ accept: application/json
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">gr</span> <span class="o">=</span> <span class="n">Greeter</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="n">gr</span><span class="o">.</span><span class="n">greet</span><span class="p">(</span><span class="s2">"world"</span><span class="p">)</span>
-</span></span></code></pre></div><codapi-snippet sandbox="python" editor="basic" state="unknown2">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><p><em>(yep, you can also create interactive Python examples!)</em></p><p>Interestingly, the gist has a <code>history</code>. It appears that every time you edit a gist, GitHub creates a new version, while also keeping previous versions.</p><p>Let's get the <strong>earliest revision</strong>, which has a <code>version</code> = <code>4c10d27cfb163d654745f1d72f2c7ce14225b83b</code> (a bit long, I know):</p><pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/gists/88242fd822603290255877e396664ba5/4c10d27cfb163d654745f1d72f2c7ce14225b83b
+</span></span></code></pre>
+                        </div><codapi-snippet sandbox="python" editor="basic" state="unknown">
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p><em>(yep, you can also create interactive Python examples!)</em></p>
+                        <p>Interestingly, the gist has a <code>history</code>. It appears that every time you edit a
+                            gist, GitHub creates a new version, while also keeping previous versions.</p>
+                        <p>Let's get the <strong>earliest revision</strong>, which has a <code>version</code> =
+                            <code>4c10d27cfb163d654745f1d72f2c7ce14225b83b</code> (a bit long, I know):</p>
+                        <pre tabindex="0"><code contenteditable="true" spellcheck="false">GET https://api.github.com/gists/88242fd822603290255877e396664ba5/4c10d27cfb163d654745f1d72f2c7ce14225b83b
 accept: application/json
 </code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><p>The code in the gist was much simpler back then:</p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="n">msg</span> <span class="o">=</span> <span class="s2">"Hello, world!"</span>
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p>The code in the gist was much simpler back then:</p>
+                        <div class="highlight">
+                            <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="n">msg</span> <span class="o">=</span> <span class="s2">"Hello, world!"</span>
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</span></span></code></pre></div><codapi-snippet sandbox="python" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><h3 id="modifying-gists">Modifying gists</h3><p>Okay, so we know how to list gists for a user, how to get a specific gist, and even how to get a specific revision. Now let's <strong>create a new gist</strong>!</p><pre tabindex="0"><code contenteditable="true" spellcheck="false">POST https://api.github.com/gists
+</span></span></code></pre>
+                        </div><codapi-snippet sandbox="python" editor="basic" state="unknown">
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <h3 id="modifying-gists">Modifying gists</h3>
+                        <p>Okay, so we know how to list gists for a user, how to get a specific gist, and even how to
+                            get a specific revision. Now let's <strong>create a new gist</strong>!</p>
+                        <pre tabindex="0"><code contenteditable="true" spellcheck="false">POST https://api.github.com/gists
 content-type: application/json
 accept: application/json
 
@@ -156,16 +359,38 @@ accept: application/json
     }
 }
 </code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><p>What's that? We have a <code>401 Unauthorized</code> error. The response body explains: "requires authentication" and even provides a link to the documentation (oh, I just love GitHub APIs).</p><p>Understandably, GitHub does not allow anonymous users to create new gists. We have to authenticate with an API token.</p><blockquote><p>If you want the following examples to work, enter your API token in the field below. You can create one with a 'gist' scope in the <a href="https://github.com/settings/tokens">GitHub settings</a>.</p><p>After you enter the token below, it will be stored locally in the browser and will not be sent anywhere (except to the GitHub API when you click the Run button).</p></blockquote><form id="token-form"><p><input name="token" type="text" placeholder="API token" style="width:100%"></p><p><button>Save</button></p></form><br><p>Let's try again, this time with an <code>authorization</code> header.</p><p>Note the <code>public</code> parameter. The service supports "secret" gists (<code>public = false</code>), but it's the "security by obscurity" type of secrecy. Secret gists do not show up in the "GET gists" API method, but they are still accessible by id, even by anonymous users.</p><pre tabindex="0"><code class="language-authenticated" data-lang="authenticated" contenteditable="true" spellcheck="false">POST https://api.github.com/gists
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p>What's that? We have a <code>401 Unauthorized</code> error. The response body explains:
+                            "requires authentication" and even provides a link to the documentation (oh, I just love
+                            GitHub APIs).</p>
+                        <p>Understandably, GitHub does not allow anonymous users to create new gists. We have to
+                            authenticate with an API token.</p>
+                        <blockquote>
+                            <p>If you want the following examples to work, enter your API token in the field below. You
+                                can create one with a 'gist' scope in the <a
+                                    href="https://github.com/settings/tokens">GitHub settings</a>.</p>
+                            <p>After you enter the token below, it will be stored locally in the browser and will not be
+                                sent anywhere (except to the GitHub API when you click the Run button).</p>
+                        </blockquote>
+                        <form id="token-form">
+                            <p><input name="token" type="text" placeholder="API token" style="width:100%"></p>
+                            <p><button>Save</button></p>
+                        </form><br>
+                        <p>Let's try again, this time with an <code>authorization</code> header.</p>
+                        <p>Note the <code>public</code> parameter. The service supports "secret" gists
+                            (<code>public = false</code>), but it's the "security by obscurity" type of secrecy. Secret
+                            gists do not show up in the "GET gists" API method, but they are still accessible by id,
+                            even by anonymous users.</p>
+                        <pre tabindex="0"><code class="language-authenticated" data-lang="authenticated" contenteditable="true" spellcheck="false">POST https://api.github.com/gists
 content-type: application/json
 accept: application/json
 authorization: bearer {token}
@@ -180,16 +405,19 @@ authorization: bearer {token}
     }
 }
 </code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><details><summary>I don't have a token, just show me the results</summary><pre><code>HTTP/1.1 201 
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <details>
+                            <summary>I don't have a token, just show me the results</summary>
+                            <pre><code>HTTP/1.1 201 
 cache-control: private, max-age=60, s-maxage=60
 content-length: 3758
 content-type: application/json; charset=utf-8
@@ -226,7 +454,14 @@ x-ratelimit-used: 3
     }
   },
   ...
-}</code></pre></details><p>HTTP status <code>201 Created</code> means that a new gist has been created as a result of our request.</p><p>Okay, now we can <strong>update a gist</strong> using its <code>id</code> (don't forget to replace the <code>{gist_id}</code> in the request line with the actual <code>id</code> value):</p><pre tabindex="0"><code class="language-authenticated" data-lang="authenticated" contenteditable="true" spellcheck="false">PATCH https://api.github.com/gists/{gist_id}
+}</code></pre>
+                        </details>
+                        <p>HTTP status <code>201 Created</code> means that a new gist has been created as a result of
+                            our request.</p>
+                        <p>Okay, now we can <strong>update a gist</strong> using its <code>id</code> (don't forget to
+                            replace the <code>{gist_id}</code> in the request line with the actual <code>id</code>
+                            value):</p>
+                        <pre tabindex="0"><code class="language-authenticated" data-lang="authenticated" contenteditable="true" spellcheck="false">PATCH https://api.github.com/gists/{gist_id}
 content-type: application/json
 accept: application/json
 authorization: bearer {token}
@@ -241,16 +476,19 @@ authorization: bearer {token}
     }
 }
 </code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><details><summary>I don't have a token, just show me the results</summary><pre><code>HTTP/1.1 200 
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <details>
+                            <summary>I don't have a token, just show me the results</summary>
+                            <pre><code>HTTP/1.1 200 
 cache-control: private, max-age=60, s-maxage=60
 content-type: application/json; charset=utf-8
 etag: W/"989eaec7cdb50ba6441e77ea2defba257b98a535f26c2ba6062f152ceffb2d77"
@@ -285,20 +523,27 @@ x-ratelimit-used: 2
     }
   },
   ...
-}</code></pre></details><p>It now greets us in Spanish 🇪🇸</p><p>Very good. Finally, let's <strong>delete a gist</strong>:</p><pre tabindex="0"><code class="language-authenticated" data-lang="authenticated" contenteditable="true" spellcheck="false">DELETE https://api.github.com/gists/{gist_id}
+}</code></pre>
+                        </details>
+                        <p>It now greets us in Spanish 🇪🇸</p>
+                        <p>Very good. Finally, let's <strong>delete a gist</strong>:</p>
+                        <pre tabindex="0"><code class="language-authenticated" data-lang="authenticated" contenteditable="true" spellcheck="false">DELETE https://api.github.com/gists/{gist_id}
 accept: application/json
 authorization: bearer {token}
 </code></pre><codapi-snippet engine="browser" sandbox="fetch" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><details><summary>I don't have a token, just show me the results</summary><pre><code>HTTP/1.1 204 
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <details>
+                            <summary>I don't have a token, just show me the results</summary>
+                            <pre><code>HTTP/1.1 204 
 x-accepted-oauth-scopes: 
 x-github-media-type: github.v3
 x-github-request-id: E8B5:8EDA:51E584:5273CC:64EE027F
@@ -307,7 +552,41 @@ x-ratelimit-limit: 5000
 x-ratelimit-remaining: 4996
 x-ratelimit-reset: 1693323114
 x-ratelimit-resource: core
-x-ratelimit-used: 4</code></pre></details><p>HTTP status <code>204 No Content</code> means we deleted the gist, so GitHub has nothing more to tell us about it. It's a little sad to see it go, but we can always make another one, right?</p><p>The Gists API has other useful features, but they are beyond the scope of this tutorial. Here are the functions we've covered:</p><ul><li>List user gists.</li><li>Get a specific gist, or a specific revision of a gist.</li><li>Create a new gist.</li><li>Update an existing gist.</li><li>Delete a gist.</li></ul><p>Now try managing your gists! You can always use this article as a playground.</p><h2 id="implementation">Implementation</h2><p>To run the API examples as we did in the previous section, you'll need a bit of JavaScript that does the following:</p><ol><li>Parses the HTTP request example.</li><li>Calls the API.</li><li>Displays the result.</li></ol><div class="row"><div class="col-xs-12 col-sm-10"><figure><img alt="Fetch API playground" src="./api_files/playground.png"><figcaption class="align-center">It's always nice when a playground doesn't need a server.</figcaption></figure></div></div><p>Since we've limited ourselves to a small subset of HTTP request capabilities, parsing is fairly easy:</p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="c1">// parse parses the request specification.
+x-ratelimit-used: 4</code></pre>
+                        </details>
+                        <p>HTTP status <code>204 No Content</code> means we deleted the gist, so GitHub has nothing more
+                            to tell us about it. It's a little sad to see it go, but we can always make another one,
+                            right?</p>
+                        <p>The Gists API has other useful features, but they are beyond the scope of this tutorial. Here
+                            are the functions we've covered:</p>
+                        <ul>
+                            <li>List user gists.</li>
+                            <li>Get a specific gist, or a specific revision of a gist.</li>
+                            <li>Create a new gist.</li>
+                            <li>Update an existing gist.</li>
+                            <li>Delete a gist.</li>
+                        </ul>
+                        <p>Now try managing your gists! You can always use this article as a playground.</p>
+                        <h2 id="implementation">Implementation</h2>
+                        <p>To run the API examples as we did in the previous section, you'll need a bit of JavaScript
+                            that does the following:</p>
+                        <ol>
+                            <li>Parses the HTTP request example.</li>
+                            <li>Calls the API.</li>
+                            <li>Displays the result.</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10">
+                                <figure><img alt="Fetch API playground" src="./api_files/playground.png">
+                                    <figcaption class="align-center">It's always nice when a playground doesn't need a
+                                        server.</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <p>Since we've limited ourselves to a small subset of HTTP request capabilities, parsing is
+                            fairly easy:</p>
+                        <div class="highlight">
+                            <pre tabindex="0" class="chroma"><code class="language-js" data-lang="js" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="c1">// parse parses the request specification.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">function</span> <span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">lines</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">"\n"</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">let</span> <span class="nx">lineIdx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -338,17 +617,22 @@ x-ratelimit-used: 4</code></pre></details><p>HTTP status <code>204 No Content</c
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">spec</span> <span class="o">=</span> <span class="nx">parse</span><span class="p">(</span><span class="sb">`GET https://httpbingo.org/uuid`</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">spec</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-</span></span></code></pre></div><codapi-snippet engine="browser" sandbox="javascript" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><p>Calling the API and displaying the results is trivial — just use the Fetch API and display the result as plain text:</p><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="c1">// execCode sends an HTTP request according to the spec
+</span></span></code></pre>
+                        </div><codapi-snippet engine="browser" sandbox="javascript" editor="basic" state="unknown">
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p>Calling the API and displaying the results is trivial — just use the Fetch API and display
+                            the result as plain text:</p>
+                        <div class="highlight">
+                            <pre tabindex="0" class="chroma"><code class="language-js" data-lang="js" contenteditable="true" spellcheck="false"><span class="line"><span class="cl"><span class="c1">// execCode sends an HTTP request according to the spec
 </span></span></span><span class="line"><span class="cl"><span class="c1">// and returns the response as text with status, headers and body.
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">async</span> <span class="kd">function</span> <span class="nx">execCode</span><span class="p">(</span><span class="nx">spec</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">resp</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">sendRequest</span><span class="p">(</span><span class="nx">spec</span><span class="p">);</span>
@@ -388,20 +672,117 @@ x-ratelimit-used: 4</code></pre></details><p>HTTP status <code>204 No Content</c
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">execCode</span><span class="p">(</span><span class="nx">spec</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-</span></span></code></pre></div><codapi-snippet engine="browser" sandbox="javascript" editor="basic" state="unknown">
-<codapi-toolbar>
-<button>Run</button>
-<a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
-<codapi-status></codapi-status>
-</codapi-toolbar>
-<codapi-output hidden="" mode="text">
-<a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
-<pre><code></code></pre>
-</codapi-output>
-</codapi-snippet><p>Fetch API works in the browser, so there is no intermediate server involved. The only nuance is that the documentation must either be on the same domain as the API itself, or the API must allow cross-domain requests. But even if that's not the case, you can always proxy the requests — it's not too much work.</p><p>If you want an out-of-the-box solution, I've written a simple library that supports both JavaScript and Fetch API playgrounds (and some others):</p><p><a href="https://github.com/nalgeon/codapi-js"><strong><code>codapi-js</code></strong></a></p><p>Ideally, I'd like most documentation to be interactive. Not just API guides, but everything from algorithms (like <a href="https://samwho.dev/hashing/">hashing</a>) to programming languages (like <a href="https://antonz.org/go-1-21-builtins/">Go</a> or <a href="https://antonz.org/trying-odin/">Odin</a>) to databases (like <a href="https://antonz.org/sql-compare-neighbors/">SQLite</a>), frameworks and tools, and even individual packages.</p><p>And (shameless plug here!) I'm building a platform that allows just that — easily embeddable code playgrounds for documentation, online education, and fun. Check it out if you are interested:</p><p><a href="https://codapi.org/"><strong><code>codapi</code></strong></a></p><p>And please try to write an interactive guide the next time you develop an API!</p><style>json-viewer{--background-color:#f5f5f5;--string-color:#177500;--number-color:var(--color-text);--boolean-color:var(--color-text);--null-color:var(--color-text);--preview-color:var(--color-gray);--property-color:#a90d91;--highlight-color:#a90d91;line-height:1.35;font-size:inherit}</style><script defer="" src="./api_files/snippet.js"></script><script defer="" src="./api_files/json-viewer.bundle.js"></script><script defer="" src="./api_files/index.js" type="module"></script><p><a href="https://antonz.org/subscribe/">★&nbsp;Subscribe</a> to keep up with new posts.</p></div></div><footer class="post__footer"><div class="row"><div class="col-xs-12"><div class="post__date"><time datetime="2023-08-30 12:00:00 +0000 UTC">30 Aug, 2023</time></div><div class="post__tags"><a href="https://antonz.org/tags/software/">software</a>&nbsp;</div></div></div></footer></article><aside class="post__related"><div class="post__nav article"><div class="row"><div class="col-xs-12 col-sm-6"><p>←&nbsp;<a href="https://antonz.org/writing-package-manager/">Writing a package manager</a></p></div><div class="col-xs-12 col-sm-6"><p><a href="https://antonz.org/curl-by-example/">Curl by example: Interactive guide</a>&nbsp;→</p></div></div></div><div class="article"><div class="row"><div class="col-xs-12 col-sm-8 col-md-6"><h3>See also</h3><p><a href="https://antonz.org/writing-package-manager/">Writing a package manager</a></p><p><a href="https://antonz.org/trying-odin/">Trying Odin (with a playground)</a></p><p><a href="https://antonz.org/big-o/">Speed of algorithms (with cats)</a></p></div></div></div></aside></div></div><footer class="container footer"><ul class="naked-list"><li class="footer__item">Subscribe:
-<a href="https://buttondown.email/antonz" class="footer__social-link"><i class="fas fa-envelope"></i><span>Newsletter</span>
-</a><a href="https://twitter.com/ohmypy" class="footer__social-link"><i class="fab fa-twitter-1"></i><span>Twitter</span>
-</a><a href="https://c.im/@antonz" class="footer__social-link"><svg class="icon" viewBox="0 0 16 16" role="img"><path fill="currentcolor" d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339.0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027.0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614.0 01-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804.0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727.0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856.0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74.0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z"></path></svg>
-</a><a href="https://www.linkedin.com/in/nalgeon/" class="footer__social-link"><i class="fab fa-linkedin-2"></i><span>LinkedIn</span>
-</a><a href="https://github.com/nalgeon" class="footer__social-link"><i class="fab fa-github-1"></i><span>GitHub</span>
-</a><a href="https://antonz.org/index.xml" class="footer__social-link"><i class="fas fa-rss"></i><span>RSS</span></a></li><li class="footer__item">Email: <a href="mailto:m@antonz.org">m@antonz.org</a></li></ul></footer><script async="" src="./api_files/count.js" data-goatcounter="https://antonzorg.goatcounter.com/count"></script></body></html>
+</span></span></code></pre>
+                        </div><codapi-snippet engine="browser" sandbox="javascript" editor="basic" state="unknown">
+                            <codapi-toolbar>
+                                <button>Run</button>
+                                <a href="https://antonz.org/interactive-api-tutorials/#edit">Edit</a>
+                                <codapi-status></codapi-status>
+                            </codapi-toolbar>
+                            <codapi-output hidden="" mode="text">
+                                <a href="https://antonz.org/interactive-api-tutorials/#close">✕</a>
+                                <pre><code></code></pre>
+                            </codapi-output>
+                        </codapi-snippet>
+                        <p>Fetch API works in the browser, so there is no intermediate server involved. The only nuance
+                            is that the documentation must either be on the same domain as the API itself, or the API
+                            must allow cross-domain requests. But even if that's not the case, you can always proxy the
+                            requests — it's not too much work.</p>
+                        <p>If you want an out-of-the-box solution, I've written a simple library that supports both
+                            JavaScript and Fetch API playgrounds (and some others):</p>
+                        <p><a href="https://github.com/nalgeon/codapi-js"><strong><code>codapi-js</code></strong></a>
+                        </p>
+                        <p>Ideally, I'd like most documentation to be interactive. Not just API guides, but everything
+                            from algorithms (like <a href="https://samwho.dev/hashing/">hashing</a>) to programming
+                            languages (like <a href="https://antonz.org/go-1-21-builtins/">Go</a> or <a
+                                href="https://antonz.org/trying-odin/">Odin</a>) to databases (like <a
+                                href="https://antonz.org/sql-compare-neighbors/">SQLite</a>), frameworks and tools, and
+                            even individual packages.</p>
+                        <p>And (shameless plug here!) I'm building a platform that allows just that — easily embeddable
+                            code playgrounds for documentation, online education, and fun. Check it out if you are
+                            interested:</p>
+                        <p><a href="https://codapi.org/"><strong><code>codapi</code></strong></a></p>
+                        <p>And please try to write an interactive guide the next time you develop an API!</p>
+                        <style>
+                            json-viewer {
+                                --background-color: #f5f5f5;
+                                --string-color: #177500;
+                                --number-color: var(--color-text);
+                                --boolean-color: var(--color-text);
+                                --null-color: var(--color-text);
+                                --preview-color: var(--color-gray);
+                                --property-color: #a90d91;
+                                --highlight-color: #a90d91;
+                                line-height: 1.35;
+                                font-size: inherit
+                            }
+                        </style>
+                        <script defer="" src="./api_files/snippet.js"></script>
+                        <script defer="" src="./api_files/json-viewer.bundle.js"></script>
+                        <script defer="" src="./api_files/index.js" type="module"></script>
+                        <p><a href="https://antonz.org/subscribe/">★&nbsp;Subscribe</a> to keep up with new posts.</p>
+                    </div>
+                </div>
+                <footer class="post__footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="post__date"><time datetime="2023-08-30 12:00:00 +0000 UTC">30 Aug, 2023</time>
+                            </div>
+                            <div class="post__tags"><a href="https://antonz.org/tags/software/">software</a>&nbsp;</div>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+            <aside class="post__related">
+                <div class="post__nav article">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <p>←&nbsp;<a href="https://antonz.org/writing-package-manager/">Writing a package
+                                    manager</a></p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <p><a href="https://antonz.org/curl-by-example/">Curl by example: Interactive
+                                    guide</a>&nbsp;→</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-md-6">
+                            <h3>See also</h3>
+                            <p><a href="https://antonz.org/writing-package-manager/">Writing a package manager</a></p>
+                            <p><a href="https://antonz.org/trying-odin/">Trying Odin (with a playground)</a></p>
+                            <p><a href="https://antonz.org/big-o/">Speed of algorithms (with cats)</a></p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <footer class="container footer">
+        <ul class="naked-list">
+            <li class="footer__item">Subscribe:
+                <a href="https://buttondown.email/antonz" class="footer__social-link"><i
+                        class="fas fa-envelope"></i><span>Newsletter</span>
+                </a><a href="https://twitter.com/ohmypy" class="footer__social-link"><i
+                        class="fab fa-twitter-1"></i><span>Twitter</span>
+                </a><a href="https://c.im/@antonz" class="footer__social-link"><svg class="icon" viewBox="0 0 16 16"
+                        role="img">
+                        <path fill="currentcolor"
+                            d="M11.19 12.195c2.016-.24 3.77-1.475 3.99-2.603.348-1.778.32-4.339.32-4.339.0-3.47-2.286-4.488-2.286-4.488C12.062.238 10.083.017 8.027.0h-.05C5.92.017 3.942.238 2.79.765c0 0-2.285 1.017-2.285 4.488l-.002.662c-.004.64-.007 1.35.011 2.091.083 3.394.626 6.74 3.78 7.57 1.454.383 2.703.463 3.709.408 1.823-.1 2.847-.647 2.847-.647l-.06-1.317s-1.303.41-2.767.36c-1.45-.05-2.98-.156-3.215-1.928a3.614 3.614.0 01-.033-.496s1.424.346 3.228.428c1.103.05 2.137-.064 3.188-.189zm1.613-2.47H11.13v-4.08c0-.859-.364-1.295-1.091-1.295-.804.0-1.207.517-1.207 1.541v2.233H7.168V5.89c0-1.024-.403-1.541-1.207-1.541-.727.0-1.091.436-1.091 1.296v4.079H3.197V5.522c0-.859.22-1.541.66-2.046.456-.505 1.052-.764 1.793-.764.856.0 1.504.328 1.933.983L8 4.39l.417-.695c.429-.655 1.077-.983 1.934-.983.74.0 1.336.259 1.791.764.442.505.661 1.187.661 2.046v4.203z">
+                        </path>
+                    </svg>
+                </a><a href="https://www.linkedin.com/in/nalgeon/" class="footer__social-link"><i
+                        class="fab fa-linkedin-2"></i><span>LinkedIn</span>
+                </a><a href="https://github.com/nalgeon" class="footer__social-link"><i
+                        class="fab fa-github-1"></i><span>GitHub</span>
+                </a><a href="https://antonz.org/index.xml" class="footer__social-link"><i
+                        class="fas fa-rss"></i><span>RSS</span></a>
+            </li>
+            <li class="footer__item">Email: <a href="mailto:m@antonz.org">m@antonz.org</a></li>
+        </ul>
+    </footer>
+    <script async="" src="./api_files/count.js" data-goatcounter="https://antonzorg.goatcounter.com/count"></script>
+</body>
+
+</html>
