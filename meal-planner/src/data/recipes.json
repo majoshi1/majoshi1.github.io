@@ -1,0 +1,562 @@
+[
+  {
+    "name": "Pumpkin Gnocchi",
+    "time": 40,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Tteokbokki Gnocchi",
+    "time": 25,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Zucchini", "Gnocchi"]
+  },
+  {
+    "name": "Gnocchi Al Pesto",
+    "time": 25,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Zucchini", "Gnocchi"]
+  },
+  {
+    "name": "Mustardy Spaetzle-Style Gnocchi",
+    "time": 30,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Cauliflower", "Gnocchi"]
+  },
+  {
+    "name": "One-Pan Gnocchi",
+    "time": 20,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Spinach", "Gnocchi"]
+  },
+  {
+    "name": "Parmesan Gnocchi",
+    "time": 30,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Sweet Potato Gnocchi",
+    "time": 30,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Sweet potato", "Gnocchi"]
+  },
+  {
+    "name": "Gnocchi au Gratin",
+    "time": 40,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Onion", "Gnocchi"]
+  },
+  {
+    "name": "Smoky Broccoli Cheddar Mac and Cheese",
+    "time": 20,
+    "category": "Pasta",
+    "season": "all",
+    "ingredients": ["Broccoli", "Gnocchi"]
+  },
+  {
+    "name": "Summer Squash Mafaldine",
+    "time": 25,
+    "category": "Pasta",
+    "season": "all",
+    "ingredients": ["Beans", "Gnocchi"]
+  },
+  {
+    "name": "One-Pot Black Bean Enchilada Pasta",
+    "time": 20,
+    "category": "Pasta",
+    "season": "all",
+    "ingredients": ["Beans", "Gnocchi"]
+  },
+  {
+    "name": "Miso Ramen Soup",
+    "time": 20,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Spinach", "Gnocchi"]
+  },
+  {
+    "name": "Seitan Yaki Udon",
+    "time": 30,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Seitan", "Udon"]
+  },
+  {
+    "name": "Green Curry Udon",
+    "time": 15,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Tomato", "Udon"]
+  },
+  {
+    "name": "Kimchi Udon",
+    "time": 20,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Kimchi", "Udon"]
+  },
+  {
+    "name": "Peanut Pad Thai",
+    "time": 30,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Green beans", "Noodles"]
+  },
+  {
+    "name": "Spring Corn Chowder",
+    "time": 30,
+    "category": "Soup",
+    "season": "spring",
+    "ingredients": ["Onion", "Corn"]
+  },
+  {
+    "name": "Smoky Two Bean Chili ",
+    "time": 40,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Beans", "Onion"]
+  },
+  {
+    "name": "Bluff Bourguignon Stew",
+    "time": 45,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Shitake protein", "Onion"]
+  },
+  {
+    "name": "Veggies & Dumplings",
+    "time": 40,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Root Vegetables", "Mushrooms"]
+  },
+  {
+    "name": "Thai Vegetable Corn Chowder",
+    "time": 25,
+    "category": "Soup",
+    "season": "spring",
+    "ingredients": ["Mushrooms", "Corn"]
+  },
+  {
+    "name": "Chile-Mint Red Lentil Soup",
+    "time": 55,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Onion", "Carrots"]
+  },
+  {
+    "name": "Creamy Coconut Curry",
+    "time": 25,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Beans", "Rice"]
+  },
+  {
+    "name": "Minted Spinach Soup",
+    "time": 30,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Spinach", "Chickpeas"]
+  },
+  {
+    "name": "Cheesy Bean Burritos",
+    "time": 15,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "BBQ Tofu Wraps",
+    "time": 25,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Seitan Gyros",
+    "time": 20,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "BBQ Roasted Sweet Potato Wraps",
+    "time": 25,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "French Onion Burgers",
+    "time": 45,
+    "category": "Sandwich",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Crispy Cheese Burritos",
+    "time": 40,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Country-Fried Shitake Sandwiches",
+    "time": 30,
+    "category": "Sandwich",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Tofu Sloppy Joes",
+    "time": 35,
+    "category": "Sandwich",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Tangy Tandoori Grilled Cheese Sandwiches",
+    "time": 30,
+    "category": "Sandwich",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Jalapeno Popper Grilled Cheese Sandwiches",
+    "time": 15,
+    "category": "Sandwich",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Game day Potato Nachos",
+    "time": 30,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Spicy Quesabirria Tacos",
+    "time": 40,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Pablano Tacos",
+    "time": 40,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Chipotle Black Bean Tacos",
+    "time": 15,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Indian Butter Chickpea Tacos",
+    "time": 25,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Enchilada Casserole",
+    "time": 40,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Patatas Bravas Tacos",
+    "time": 35,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Mushroom Bulgogi Tacos",
+    "time": 30,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Crispy Avacado Tacos",
+    "time": 20,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Cowboy Caviar Sheet-Pan Tacos",
+    "time": 30,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Black Bean Chilaquiles",
+    "time": 30,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Rajas Avocado Tacos",
+    "time": 30,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Crispy Kogi Tacos",
+    "time": 20,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Chipotle Tofu Tacos",
+    "time": 20,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Korean Tofu Tacos",
+    "time": 20,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Chile-Peanut Tofu Noodles",
+    "time": 20,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Orange Tofu Rice",
+    "time": 40,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Green Shakshuka",
+    "time": 25,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Massaman Curry",
+    "time": 20,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Super Greens Fried Rice",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Caribbean-Curry Plantain Bowls",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Thai Tofu Lettuce Cups",
+    "time": 25,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Chipotle Sweet Potatoes",
+    "time": 35,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Caribbean Sweet Potatoes",
+    "time": 45,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Greek White Beans",
+    "time": 30,
+    "category": "Soup",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Japanese Yam Sushi Bowls",
+    "time": 35,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Crispy Kogi Lettuce Cups",
+    "time": 20,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Sesame-Orange Tofu",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Kimchi Fried Rice",
+    "time": 25,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Maple Seitan Lettuce Cups",
+    "time": 35,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Tempura Roll Lettuce Cups",
+    "time": 35,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Spring Godess Bowls",
+    "time": 15,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Braised Collard Greens",
+    "time": 35,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "General TSO's Tofu",
+    "time": 35,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Sheet-Pan Bibimbap",
+    "time": 35,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "French Lentil Bowls",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Kogi Tofu Lettuce Cups",
+    "time": 20,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Summer Corn-Coconut Curry",
+    "time": 25,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Shepherd's Pie",
+    "time": 40,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Cheesy Wild Rice Casserole",
+    "time": 50,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Pesto Risotto",
+    "time": 60,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Crispy Lemon Chick'n",
+    "time": 25,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Gochujang Tofu Bowls",
+    "time": 25,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Miso-Butter Farro",
+    "time": 20,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "One-Pot Sweet Potato & Black Bean Skillet",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Mushroom Fried Rice",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Squash", "Gnocchi"]
+  }
+]
