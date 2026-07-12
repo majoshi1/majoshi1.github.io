@@ -14,7 +14,7 @@ function App() {
         <WeeklyMenu />
       </main>
       <footer className='footer'>
-        <p>&copy; 2026 Food Recipes</p>
+        <p>&copy; 2026 Vegan Food Recipes</p>
       </footer>
     </div>
   );
