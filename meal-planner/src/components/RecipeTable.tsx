@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import recipes from '../data/recipes.json';
 
 const RecipeTable = () => {
-  const recipesData: any = useState(recipes);
+  const recipesData: any = recipes;
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
