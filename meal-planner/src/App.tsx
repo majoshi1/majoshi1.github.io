@@ -7,7 +7,7 @@ function App() {
   return (
     <div className='app-container'>
       <header className='header'>
-        <h1>Food Recipes</h1>
+        <h1>Vegan Food Recipes</h1>
       </header>
       <main className='main'>
         <RecipeTable />
