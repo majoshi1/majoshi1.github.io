@@ -7,14 +7,14 @@ function App() {
   return (
     <div className='app-container'>
       <header className='header'>
-        <h1>Vegan Food Recipes</h1>
+        <h1>Vegan Meal Planner</h1>
       </header>
       <main className='main'>
-        <RecipeTable />
         <WeeklyMenu />
+        <RecipeTable />
       </main>
       <footer className='footer'>
-        <p>&copy; 2026 Vegan Food Recipes</p>
+        <p>&copy; 2026 Vegan Meal Planner</p>
       </footer>
     </div>
   );

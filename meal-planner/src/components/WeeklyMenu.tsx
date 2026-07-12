@@ -13,7 +13,7 @@ const WeeklyMenu = () => {
       const categoryRecipes = currentSeasonRecipes.filter((recipe) => recipe.category === category);
       return categoryRecipes[Math.floor(Math.random() * categoryRecipes.length)];
     });
-    const randomRecipes: any = catRecipes.sort(() => Math.random() - 0.5).slice(0, 4);
+    const randomRecipes: any = catRecipes.sort(() => Math.random() - 0.5).slice(0, 5);
     setWeeklyMenu(randomRecipes);
   }, [currentSeason]);
 
@@ -25,22 +25,20 @@ const WeeklyMenu = () => {
   return (
     <div>
       <h2>Weekly Menu for {currentSeason}</h2>
-      <table style={{ display: 'block', overflowY: 'auto', height: '300px', width: '100%', whiteSpace: 'nowrap' }}>
+      <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Category</th>
             <th>Ingredients</th>
-            <th>Link</th>
           </tr>
         </thead>
         <tbody>
           {weeklyMenu.map((recipe: any) => (
             <tr key={recipe.name}>
-              <td>{recipe.name}</td>
+              <td><a href={'/#'} target='_blank' rel='noopener noreferrer' onClick={() => linkHandler(recipe.name)}>{recipe.name}</a></td>
               <td>{recipe.category}</td>
               <td>{recipe.ingredients.join(', ')}</td>
-              <td><a href={'/#'} target='_blank' rel='noopener noreferrer' onClick={() => linkHandler(recipe.name)}>View Recipe</a></td>
             </tr>
           ))}
         </tbody>

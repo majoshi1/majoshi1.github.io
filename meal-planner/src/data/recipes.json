@@ -172,35 +172,35 @@
     "time": 15,
     "category": "Wraps",
     "season": "all",
-    "ingredients": ["Squash", "Gnocchi"]
+    "ingredients": ["Beans", "Onion"]
   },
   {
     "name": "BBQ Tofu Wraps",
     "time": 25,
     "category": "Wraps",
     "season": "all",
-    "ingredients": ["Squash", "Gnocchi"]
+    "ingredients": ["Sweet potato", "Tofu"]
   },
   {
     "name": "Seitan Gyros",
     "time": 20,
     "category": "Wraps",
     "season": "all",
-    "ingredients": ["Squash", "Gnocchi"]
+    "ingredients": ["Shallot", "Seitan"]
   },
   {
     "name": "BBQ Roasted Sweet Potato Wraps",
     "time": 25,
     "category": "Wraps",
     "season": "all",
-    "ingredients": ["Squash", "Gnocchi"]
+    "ingredients": ["Sweet potato", "Tortillas"]
   },
   {
     "name": "French Onion Burgers",
     "time": 45,
     "category": "Sandwich",
     "season": "all",
-    "ingredients": ["Squash", "Gnocchi"]
+    "ingredients": ["Potato", "Burger patties"]
   },
   {
     "name": "Crispy Cheese Burritos",
