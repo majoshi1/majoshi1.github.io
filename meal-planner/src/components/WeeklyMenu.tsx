@@ -30,7 +30,7 @@ const WeeklyMenu = () => {
           <tr>
             <th>Name</th>
             <th>Category</th>
-            <th>Ingredients</th>
+            <th>Time (min)</th>
           </tr>
         </thead>
         <tbody>
@@ -38,7 +38,7 @@ const WeeklyMenu = () => {
             <tr key={recipe.name}>
               <td><a href={'/#'} target='_blank' rel='noopener noreferrer' onClick={() => linkHandler(recipe.name)}>{recipe.name}</a></td>
               <td>{recipe.category}</td>
-              <td>{recipe.ingredients.join(', ')}</td>
+              <td>{recipe.time}</td>
             </tr>
           ))}
         </tbody>

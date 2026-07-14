@@ -29,6 +29,7 @@ const RecipeTable = () => {
           <tr>
             <th>Name</th>
             <th>Category</th>
+            <th>Time</th>
             <th>Season</th>
             <th>Ingredients</th>
           </tr>
@@ -38,6 +39,7 @@ const RecipeTable = () => {
             <tr key={recipe.name}>
               <td><a href={'/#'} target='_blank' rel='noopener noreferrer' onClick={() => linkHandler(recipe.name)}>{recipe.name}</a></td>
               <td>{recipe.category}</td>
+              <td>{recipe.time}</td>
               <td>{recipe.season}</td>
               <td>{recipe.ingredients.join(', ')}</td>
             </tr>
