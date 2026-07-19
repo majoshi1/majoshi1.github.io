@@ -3,19 +3,25 @@ import recipes from '../data/recipes.json';
 
 const WeeklyMenu = () => {
   const [weeklyMenu, setWeeklyMenu] = useState([]);
+  const [time, setTime] = useState('all');
   const currentSeason = getCurrentSeason();
 
   useEffect(() => {
+    filterRecipes();
+  }, [currentSeason, time]);
+
+  const filterRecipes = () => {
     const currentSeasonRecipes = recipes.filter((recipe) => recipe.season === currentSeason || recipe.season === 'all');
     // Pick one random recipe from random categories for the weekly menu
     const categories = Array.from(new Set(currentSeasonRecipes.map((recipe) => recipe.category)));
     const catRecipes = categories.map((category) => {
       const categoryRecipes = currentSeasonRecipes.filter((recipe) => recipe.category === category);
-      return categoryRecipes[Math.floor(Math.random() * categoryRecipes.length)];
+      const timeRecipes = categoryRecipes.filter((recipe) => time === 'all' ? true : time === 'long' ? recipe.time > 30 : recipe.time <= parseInt(time));
+      return timeRecipes[Math.floor(Math.random() * timeRecipes.length)];
     });
     const randomRecipes: any = catRecipes.sort(() => Math.random() - 0.5).slice(0, 5);
     setWeeklyMenu(randomRecipes);
-  }, [currentSeason]);
+  };
 
   const linkHandler = (recipeName: string) => {
     // Open google search for the recipe name
@@ -25,6 +31,24 @@ const WeeklyMenu = () => {
   return (
     <div>
       <h2>Weekly Menu for {currentSeason}</h2>
+      <div>
+        <label>
+          <input type="radio" name="time" value="10" onChange={() => setTime('all')} checked={time === 'all'} />
+          All
+        </label>
+        <label>
+          <input type="radio" name="time" value="15" onChange={() => setTime('15')} checked={time === '15'} />
+          15 min
+        </label>
+        <label>
+          <input type="radio" name="time" value="30" onChange={() => setTime('30')} checked={time === '30'} />
+          30 min
+        </label>
+        <label>
+          <input type="radio" name="time" value="long" onChange={() => setTime('long')} checked={time === 'long'} />
+          Long (30+ mins)
+        </label>
+      </div>
       <table>
         <thead>
           <tr>
