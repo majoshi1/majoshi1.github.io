@@ -23,8 +23,7 @@ const WeeklyMenu = () => {
     setWeeklyMenu(randomRecipes);
   };
 
-  const linkHandler = (e: any, recipeName: string) => {
-    e.preventDefault();
+  const linkHandler = (recipeName: string) => {
     // Open google search for the recipe name
     window.open(`https://www.google.com/search?q=${encodeURIComponent('site: purplecarrot.com ' + recipeName)}`, '_blank');
   };
@@ -61,7 +60,7 @@ const WeeklyMenu = () => {
         <tbody>
           {weeklyMenu.map((recipe: any) => (
             <tr key={recipe.name}>
-              <td><a href={'/#'} target='_blank' rel='noopener noreferrer' onClick={(e) => linkHandler(e, recipe.name)}>{recipe.name}</a></td>
+              <td><a href="javascript:void(0)" onClick={() => linkHandler(recipe.name)}>{recipe.name}</a></td>
               <td>{recipe.category}</td>
               <td>{recipe.time}</td>
             </tr>
