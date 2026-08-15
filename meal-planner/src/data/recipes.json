@@ -546,7 +546,7 @@
     "ingredients": ["Squash", "Gnocchi"]
   },
   {
-    "name": "One-Pot Sweet Potato & Black Bean Skillet",
+    "name": "One-Pot Black Bean Skillet",
     "time": 30,
     "category": "Rice",
     "season": "all",
@@ -558,5 +558,89 @@
     "category": "Rice",
     "season": "all",
     "ingredients": ["Squash", "Gnocchi"]
+  },
+  {
+    "name": "Tomato Sashimi Poke Bowls",
+    "time": 25,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Quinoa", "Rice"]
+  },
+  {
+    "name": "Spicy Buffalo Tofu Bowls",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Tofu", "Rice"]
+  },
+  {
+    "name": "BBQ Black Bean Quesadillas",
+    "time": 15,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Tortillas", "Beans"]
+  },
+  {
+    "name": "Farmhouse Corn Chowder",
+    "time": 30,
+    "category": "Soup",
+    "season": "Summer",
+    "ingredients": ["Corn", "Potato"]
+  },
+  {
+    "name": "Mongolian Seitan",
+    "time": 30,
+    "category": "Rice",
+    "season": "all",
+    "ingredients": ["Seitan", "Rice"]
+  },
+  {
+    "name": "Black bean Enfrijoladas",
+    "time": 40,
+    "category": "Tacos",
+    "season": "all",
+    "ingredients": ["Tortillas", "Beans"]
+  },
+  {
+    "name": "Sesame-Broccoli Okonomiyaki",
+    "time": 30,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Flour", "Cabbage"]
+  },
+  {
+    "name": "Grilled Veggie Tostadas",
+    "time": 20,
+    "category": "Wraps",
+    "season": "all",
+    "ingredients": ["Tortillas", "Beans"]
+  },
+  {
+    "name": "Island Curry",
+    "time": 30,
+    "category": "Curry",
+    "season": "all",
+    "ingredients": ["Coconut milk", "Rice"]
+  },
+  {
+    "name": "One-pot Mushroom Tetrazzini",
+    "time": 20,
+    "category": "Pasta",
+    "season": "all",
+    "ingredients": ["Pasta", "Mushrooms"]
+  },
+  {
+    "name": "Lazy Pierogi Gnocchi",
+    "time": 30,
+    "category": "Gnocchi",
+    "season": "all",
+    "ingredients": ["Gnocchi", "Cabbage"]
+  },
+  {
+    "name": "Thai Peanut Noodles",
+    "time": 25,
+    "category": "Noodles",
+    "season": "all",
+    "ingredients": ["Noodles", "Peanut"]
   }
 ]
